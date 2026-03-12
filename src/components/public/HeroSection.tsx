@@ -133,17 +133,18 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay"
       onMouseMove={handleMouseMove}
     >
-      {/* Animated SVG background with slow rotation */}
+      {/* Stunning high-quality beauty background image */}
       <motion.div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0"
         style={{ x: bgX, y: bgY }}
       >
-        <div className="absolute inset-[-20%] animate-[slowRotate_60s_linear_infinite]">
+        <div className="absolute inset-[-5%]">
+          {/* Using a high-quality beauty portrait from Unsplash as the hero image */}
           <Image
-            src="/images/hero-bg.svg"
-            alt=""
+            src="https://images.unsplash.com/photo-1512496015851-a1c848daae54?auto=format&fit=crop&q=80&w=2000"
+            alt="Luxury Beauty Studio"
             fill
-            className="object-cover"
+            className="object-cover object-top opacity-60"
             priority
           />
         </div>

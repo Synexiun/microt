@@ -72,7 +72,7 @@ export default function ReviewStep({
         Please confirm everything looks correct
       </p>
 
-      <div className="bg-dark-light border border-dark-lighter rounded-lg overflow-hidden">
+      <div className="bg-dark-light/50 border border-gold/20 rounded-lg overflow-hidden glass shadow-glow-sm">
         {rows.map((row, idx) => (
           <div
             key={idx}

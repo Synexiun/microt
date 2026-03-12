@@ -33,11 +33,11 @@ export default function ServiceStep({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`
-                relative text-left p-6 rounded-lg border transition-all duration-300
+                relative text-left p-6 rounded-lg border transition-all duration-300 glass hover-glow
                 ${
                   isSelected
-                    ? "bg-dark-light border-gold shadow-glow"
-                    : "bg-dark-light border-dark-lighter hover:border-gold/30 hover:shadow-glow-sm"
+                    ? "bg-dark shadow-glow ring-2 ring-gold border-transparent"
+                    : "bg-dark/50 border-gold/20 hover:border-gold/50"
                 }
               `}
             >

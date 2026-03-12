@@ -89,7 +89,7 @@ export default function AboutSection() {
                 className="relative w-full h-full rounded-lg overflow-hidden border border-gold/20"
               >
                 <img
-                  src="/images/about-artist.svg"
+                  src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=800"
                   alt="Lead artist at Velvet Brow Studio"
                   className="w-full h-full object-cover"
                 />

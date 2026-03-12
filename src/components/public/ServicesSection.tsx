@@ -2,6 +2,7 @@
 
 import React, { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { services } from '@/lib/services';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -94,13 +95,15 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
           {services.map((service, index) => (
             <TiltCard key={service.slug} index={index}>
-              {/* Service image */}
-              <div className="w-full aspect-[16/10] rounded-lg overflow-hidden mb-6 bg-dark border border-dark-lighter">
-                <img
-                  src={`/images/services/${service.slug}.svg`}
+              {/* Service image - using high-quality unsplash beauty placeholders */}
+              <div className="w-full aspect-[16/10] rounded-lg overflow-hidden mb-6 bg-dark border border-dark-lighter relative">
+                <Image
+                  src={`https://images.unsplash.com/photo-1588513511116-43beaf66caaa?auto=format&fit=crop&q=80&w=600&h=400`}
                   alt={service.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
+                <div className="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
               {/* Name */}
@@ -143,28 +146,36 @@ export default function ServicesSection() {
                 </span>
               </div>
 
-              {/* Link */}
-              <Link
-                href={`/services/${service.slug}`}
-                className="inline-flex items-center gap-2 text-gold text-sm font-semibold uppercase tracking-wider hover:gap-3 transition-all duration-300"
-              >
-                Learn More
-                <motion.svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  whileHover={{ x: 4 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+              {/* Links */}
+              <div className="flex items-center gap-4 mt-2">
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 text-gold text-sm font-semibold uppercase tracking-wider hover:gap-3 transition-all duration-300"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                  />
-                </motion.svg>
-              </Link>
+                  Learn More
+                  <motion.svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    whileHover={{ x: 4 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </motion.svg>
+                </Link>
+                <Link
+                  href={`/book?service=${service.slug}`}
+                  className="inline-flex items-center justify-center px-4 py-2 bg-gold/10 hover:bg-gold/20 text-gold border border-gold/30 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 ml-auto"
+                >
+                  Book Now
+                </Link>
+              </div>
             </TiltCard>
           ))}
         </div>

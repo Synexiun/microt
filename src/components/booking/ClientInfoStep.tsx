@@ -55,7 +55,7 @@ export default function ClientInfoStep({
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-5 bg-dark-light border border-dark-lighter rounded-lg p-6 sm:p-8"
+        className="space-y-5 bg-dark-light/50 border border-gold/20 rounded-lg p-6 sm:p-8 glass hover-glow"
       >
         <Input
           label="Full Name"
