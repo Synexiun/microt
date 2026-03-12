@@ -111,7 +111,14 @@ export default function InstagramSection() {
                   {/* Thumbnail image */}
                   <div className="aspect-square relative overflow-hidden">
                     <img
-                      src={`/images/gallery/gallery-${post.imageIndex}.svg`}
+                      src={
+                        post.imageIndex === 1 ? '/images/custom/microblading.png' :
+                        post.imageIndex === 2 ? '/images/custom/phibrows.png' :
+                        post.imageIndex === 3 ? '/images/custom/combo-brows.png' :
+                        post.imageIndex === 4 ? '/images/custom/lip-blush.png' :
+                        post.imageIndex === 5 ? '/images/custom/permanent-eyeliner.png' :
+                        'https://images.unsplash.com/photo-1542452255191-c85a98f2c5d1?auto=format&fit=crop&q=80&w=600&h=600'
+                      }
                       alt={post.caption}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />

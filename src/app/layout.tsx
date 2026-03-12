@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, Raleway } from "next/font/google";
 import { BRAND, BUSINESS_HOURS } from "@/lib/constants";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-heading",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-montserrat",
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/custom/hero.png",
         width: 1200,
         height: 630,
         alt: "Velvet Brow Studio - Luxury Permanent Makeup",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Velvet Brow Studio | Luxury Brow & Permanent Makeup",
     description:
       "Luxury permanent makeup services in Costa Mesa, CA. Where precision meets beauty.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/custom/hero.png"],
   },
 };
 
@@ -89,13 +89,13 @@ export default function RootLayout({
       addressCountry: "US",
     },
     openingHoursSpecification: openingHoursSpec,
-    image: `${siteUrl}/images/og-image.jpg`,
+    image: `${siteUrl}/images/custom/hero.png`,
     priceRange: "$$",
   };
 
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
-      <body className="font-montserrat bg-dark text-white antialiased">
+    <html lang="en" className={`${cormorant.variable} ${raleway.variable}`}>
+      <body className="font-body bg-dark text-white antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

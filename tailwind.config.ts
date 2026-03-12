@@ -23,10 +23,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["var(--font-playfair)", "Playfair Display", "serif"],
-        body: ["var(--font-montserrat)", "Montserrat", "sans-serif"],
-        montserrat: ["var(--font-montserrat)", "Montserrat", "sans-serif"],
-        playfair: ["var(--font-playfair)", "Playfair Display", "serif"],
+        heading: ["var(--font-heading)", "Cormorant Garamond", "Georgia", "serif"],
+        body: ["var(--font-body)", "Raleway", "Helvetica Neue", "sans-serif"],
       },
       backgroundImage: {
         "gold-gradient":

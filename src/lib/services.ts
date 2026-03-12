@@ -10,7 +10,7 @@ export const services: Service[] = [
       "Microblading is a semi-permanent cosmetic tattooing technique that creates the appearance of natural, fuller eyebrows. Using a specialized hand-held tool with ultra-fine needles, our artists deposit pigment into the upper layers of the skin, drawing individual hair-like strokes that blend seamlessly with your existing brow hair.\n\nAt Velvet Brow Studio, our microblading artists are trained in the latest techniques and use only premium pigments that are formulated to heal true to color. Each session begins with a detailed consultation where we analyze your facial structure, skin tone, and personal preferences to design brows that perfectly complement your features.\n\nThe result is a set of stunningly natural brows that frame your face beautifully, eliminating the need for daily brow makeup. Whether you have sparse brows, gaps, or simply want a more defined shape, microblading delivers effortless beauty that lasts 12 to 18 months.",
     duration: "2-3 hours",
     priceRange: "$400-$600",
-    image: "/images/services/microblading.jpg",
+    image: "/images/custom/microblading.png",
     processSteps: [
       {
         title: "Consultation & Design",
@@ -97,7 +97,7 @@ export const services: Service[] = [
       "PhiBrows is a premium microblading technique that uses the golden ratio (Phi) to create perfectly symmetrical and harmonious eyebrows. This internationally renowned method combines mathematical precision with artistic skill to design brows that are uniquely suited to each individual's facial features.\n\nAs certified PhiBrows artists, our team at Velvet Brow Studio has undergone rigorous training and meets the highest international standards of excellence. The PhiBrows technique utilizes specially formulated pigments and proprietary tools that are designed to deliver superior color retention and the most natural-looking results possible.\n\nEvery PhiBrows procedure begins with the meticulous PhiMapping process, where your ideal brow shape is calculated using facial landmarks and the golden ratio. This ensures perfect symmetry and balance, creating brows that enhance your natural beauty in the most harmonious way.",
     duration: "2-3 hours",
     priceRange: "$500-$700",
-    image: "/images/services/phibrows.jpg",
+    image: "/images/custom/phibrows.png",
     processSteps: [
       {
         title: "PhiMapping & Consultation",
@@ -184,7 +184,7 @@ export const services: Service[] = [
       "Combo brows, also known as combination brows, merge the best of two techniques: microblading and powder ombre shading. The result is a beautifully dimensional brow that features realistic hair strokes at the front and a soft, powdery gradient through the body and tail of the brow.\n\nThis technique is ideal for clients who want the natural hair-stroke look of microblading with the added fullness and definition that powder shading provides. Combo brows work exceptionally well on all skin types, including oily skin where traditional microblading alone may not retain as crisply.\n\nAt Velvet Brow Studio, our combo brow artists excel at blending these two techniques seamlessly, creating a gradient effect that looks like perfectly applied brow makeup — except it stays on 24/7. Wake up every morning with flawless brows that require zero effort.",
     duration: "2.5-3 hours",
     priceRange: "$450-$650",
-    image: "/images/services/combo-brows.jpg",
+    image: "/images/custom/combo-brows.png",
     processSteps: [
       {
         title: "Shape Design & Consultation",
@@ -271,7 +271,7 @@ export const services: Service[] = [
       "Lip blush is a semi-permanent cosmetic tattoo that enhances the natural color, shape, and definition of your lips. This technique deposits a soft wash of pigment into the lips, creating a beautiful tinted effect that looks like you are always wearing your favorite lip color.\n\nThe lip blush technique at Velvet Brow Studio goes beyond simple color application. Our artists carefully correct asymmetries, define the lip border for a more polished appearance, and can even create the illusion of fuller lips through strategic shading and color placement. The result is effortlessly beautiful lips that look naturally flushed and youthful.\n\nWhether you want to correct uneven lip color, add definition to pale lips, restore color lost with age, or simply wake up with gorgeous lips every morning, lip blush is the perfect solution. Choose from a range of colors, from subtle nudes to rosy pinks to berry tones.",
     duration: "2-3 hours",
     priceRange: "$400-$550",
-    image: "/images/services/lip-blush.jpg",
+    image: "/images/custom/lip-blush.png",
     processSteps: [
       {
         title: "Color Consultation",
@@ -358,7 +358,7 @@ export const services: Service[] = [
       "Permanent eyeliner is a semi-permanent cosmetic tattoo applied along the lash line to create the appearance of perfectly applied eyeliner that never smudges, smears, or fades throughout the day. This treatment is one of the most transformative permanent makeup procedures, instantly making eyes appear larger, more defined, and more awake.\n\nAt Velvet Brow Studio, we offer a range of permanent eyeliner styles to suit your preferences, from a subtle lash line enhancement that adds invisible fullness between the lashes to a thin classic line for everyday definition to a slightly thicker wing for a more dramatic look. Our artists work with you to choose the perfect style and thickness.\n\nPermanent eyeliner is perfect for anyone who wants to save time on their daily makeup routine, those with allergies to conventional eyeliner products, contact lens wearers who struggle with traditional liner, or anyone who wants smudge-proof definition around the clock.",
     duration: "1.5-2 hours",
     priceRange: "$300-$500",
-    image: "/images/services/permanent-eyeliner.jpg",
+    image: "/images/custom/permanent-eyeliner.png",
     processSteps: [
       {
         title: "Style Consultation",

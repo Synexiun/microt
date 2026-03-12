@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { NAV_LINKS } from '@/lib/constants';
 import GoldButton from '@/components/ui/GoldButton';
@@ -83,13 +82,11 @@ export default function Navbar() {
           >
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center gap-3">
-              <div className="relative w-8 h-8 md:w-10 md:h-10">
-                <Image
-                  src="/images/hero-bg.svg"
-                  alt="Velvet Brow Studio"
-                  fill
-                  className="object-contain"
-                />
+              <div className="relative w-8 h-8 md:w-10 md:h-10 text-gold flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/>
+                  <path d="M12 6.5c-3 0-5.5 2.5-5.5 5.5s2.5 5.5 5.5 5.5 5.5-2.5 5.5-5.5-2.5-5.5-5.5-5.5zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z" opacity=".3"/>
+                </svg>
               </div>
               <span className="font-heading text-xl md:text-2xl font-bold bg-gold-gradient bg-clip-text text-transparent">
                 Velvet Brow Studio
