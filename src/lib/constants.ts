@@ -1,0 +1,45 @@
+export const BRAND = {
+  name: "Velvet Brow Studio",
+  tagline: "Where Precision Meets Beauty",
+  description:
+    "Velvet Brow Studio is a luxury permanent makeup studio in Costa Mesa, CA, specializing in microblading, PhiBrows, combo brows, lip blush, and permanent eyeliner. Our expert artists combine artistry with precision to enhance your natural beauty.",
+  location: "Costa Mesa, CA",
+  phone: "949-555-0123",
+  email: "hello@velvetbrowstudio.com",
+} as const;
+
+export const BUSINESS_HOURS: Record<string, { open: string; close: string } | null> = {
+  Monday: { open: "9:00 AM", close: "6:00 PM" },
+  Tuesday: { open: "9:00 AM", close: "6:00 PM" },
+  Wednesday: { open: "9:00 AM", close: "6:00 PM" },
+  Thursday: { open: "9:00 AM", close: "6:00 PM" },
+  Friday: { open: "9:00 AM", close: "6:00 PM" },
+  Saturday: { open: "9:00 AM", close: "6:00 PM" },
+  Sunday: null,
+};
+
+export const SOCIAL_LINKS = {
+  instagram: "#",
+  tiktok: "#",
+  facebook: "#",
+} as const;
+
+export const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact", href: "#contact" },
+] as const;
+
+export const BOOKING_TIMES = [
+  "9:00 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "1:00 PM",
+  "2:00 PM",
+  "3:00 PM",
+  "4:00 PM",
+  "5:00 PM",
+] as const;
