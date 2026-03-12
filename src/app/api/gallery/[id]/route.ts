@@ -3,6 +3,8 @@ import { del } from "@vercel/blob";
 import { readJsonFile, deleteFromJsonFile } from "@/lib/data";
 import type { GalleryImage } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 export async function DELETE(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }

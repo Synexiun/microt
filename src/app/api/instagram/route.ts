@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, deleteFromJsonFile } from "@/lib/data";
 import type { InstagramPost } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const posts = await readJsonFile<InstagramPost>("instagram.json");

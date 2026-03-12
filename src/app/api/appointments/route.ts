@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, updateInJsonFile } from "@/lib/data";
 import { bookingSchema } from "@/lib/validators";
 import { getServiceBySlug } from "@/lib/services";
+
+export const dynamic = "force-dynamic";
 import type { Appointment, Customer } from "@/types";
 
 export async function GET(request: NextRequest) {

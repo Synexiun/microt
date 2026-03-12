@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { updateInJsonFile } from "@/lib/data";
 import type { Appointment } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 const VALID_STATUSES: Appointment["status"][] = [
   "pending",
   "confirmed",

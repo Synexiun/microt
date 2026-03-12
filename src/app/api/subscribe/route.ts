@@ -4,6 +4,8 @@ import { readJsonFile, appendToJsonFile } from "@/lib/data";
 import { subscribeSchema } from "@/lib/validators";
 import type { Subscriber } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();

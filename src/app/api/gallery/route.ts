@@ -5,6 +5,8 @@ import { readJsonFile, appendToJsonFile } from "@/lib/data";
 import { galleryUploadSchema } from "@/lib/validators";
 import type { GalleryImage } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const images = await readJsonFile<GalleryImage>("gallery.json");
