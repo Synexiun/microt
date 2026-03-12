@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -246,12 +245,11 @@ export default function GalleryPage() {
               return (
                 <Card key={img.id} padding="sm" className="overflow-hidden">
                   <div className="relative aspect-square bg-dark rounded overflow-hidden mb-3">
-                    <Image
-                      src={`/uploads/gallery/${img.filename}`}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.filename}
                       alt={img.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover w-full h-full absolute inset-0"
                     />
                   </div>
                   <div className="space-y-1">

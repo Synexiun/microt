@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = createSession();
-    const maxAgeSeconds = SESSION_EXPIRY / 1000;
+    const token = await createSession();
+    const maxAgeSeconds = SESSION_EXPIRY;
 
     const response = NextResponse.json({ success: true });
     response.cookies.set(SESSION_COOKIE_NAME, token, {
@@ -54,7 +54,7 @@ export async function DELETE(request: NextRequest) {
   try {
     const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
     if (token) {
-      clearSession(token);
+      await clearSession(token);
     }
 
     const response = NextResponse.json({ success: true });

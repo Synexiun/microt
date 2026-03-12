@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { del } from "@vercel/blob";
 import { readJsonFile, deleteFromJsonFile } from "@/lib/data";
 import type { GalleryImage } from "@/types";
 
@@ -11,7 +10,6 @@ export async function DELETE(
   try {
     const { id } = await params;
 
-    // Find the image record first to get the filename
     const images = await readJsonFile<GalleryImage>("gallery.json");
     const image = images.find((img) => img.id === id);
 
@@ -22,22 +20,14 @@ export async function DELETE(
       );
     }
 
-    // Delete from JSON
+    // Delete from KV
     await deleteFromJsonFile("gallery.json", id);
 
-    // Delete physical file
-    const filePath = path.join(
-      process.cwd(),
-      "public",
-      "uploads",
-      "gallery",
-      image.filename
-    );
+    // Delete from Vercel Blob
     try {
-      await fs.unlink(filePath);
+      await del(image.filename);
     } catch {
-      // File may already be missing — not critical
-      console.warn(`Physical file not found: ${filePath}`);
+      console.warn(`Blob not found: ${image.filename}`);
     }
 
     return NextResponse.json({ success: true });

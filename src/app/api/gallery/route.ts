@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
-import fs from "fs/promises";
-import path from "path";
+import { put } from "@vercel/blob";
 import { readJsonFile, appendToJsonFile } from "@/lib/data";
 import { galleryUploadSchema } from "@/lib/validators";
 import type { GalleryImage } from "@/types";
@@ -28,7 +27,6 @@ export async function POST(request: NextRequest) {
     const serviceSlug = formData.get("serviceSlug") as string | null;
     const type = formData.get("type") as string | null;
 
-    // Validate metadata
     const metaResult = galleryUploadSchema.safeParse({
       title,
       serviceSlug,
@@ -49,7 +47,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate file type
     const allowedTypes = [
       "image/jpeg",
       "image/png",
@@ -63,27 +60,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate unique filename
+    // Upload to Vercel Blob
     const ext = file.name.split(".").pop() || "jpg";
-    const filename = `${uuidv4()}.${ext}`;
+    const filename = `gallery/${uuidv4()}.${ext}`;
+    const blob = await put(filename, file, { access: "public" });
 
-    // Ensure upload directory exists
-    const uploadDir = path.join(
-      process.cwd(),
-      "public",
-      "uploads",
-      "gallery"
-    );
-    await fs.mkdir(uploadDir, { recursive: true });
-
-    // Write file to disk
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await fs.writeFile(path.join(uploadDir, filename), buffer);
-
-    // Create gallery record
+    // Create gallery record — store the Blob URL as the filename
     const galleryImage: GalleryImage = {
       id: uuidv4(),
-      filename,
+      filename: blob.url,
       title: metaResult.data.title,
       serviceSlug: metaResult.data.serviceSlug,
       type: metaResult.data.type,

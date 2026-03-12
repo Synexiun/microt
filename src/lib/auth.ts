@@ -1,33 +1,25 @@
 import { randomUUID } from "crypto";
+import { kv } from "@vercel/kv";
 
 export const SESSION_COOKIE_NAME = "admin_session";
-export const SESSION_EXPIRY = 8 * 60 * 60 * 1000; // 8 hours
-
-const activeSessions = new Map<string, { expiresAt: number }>();
+export const SESSION_EXPIRY = 8 * 60 * 60; // 8 hours in seconds (for KV TTL)
 
 export function verifyPassword(password: string): boolean {
   const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
   return password === adminPassword;
 }
 
-export function createSession(): string {
+export async function createSession(): Promise<string> {
   const token = randomUUID();
-  activeSessions.set(token, {
-    expiresAt: Date.now() + SESSION_EXPIRY,
-  });
+  await kv.set(`session:${token}`, { createdAt: Date.now() }, { ex: SESSION_EXPIRY });
   return token;
 }
 
-export function validateSession(token: string): boolean {
-  const session = activeSessions.get(token);
-  if (!session) return false;
-  if (Date.now() > session.expiresAt) {
-    activeSessions.delete(token);
-    return false;
-  }
-  return true;
+export async function validateSession(token: string): Promise<boolean> {
+  const session = await kv.get(`session:${token}`);
+  return session !== null;
 }
 
-export function clearSession(token: string): void {
-  activeSessions.delete(token);
+export async function clearSession(token: string): Promise<void> {
+  await kv.del(`session:${token}`);
 }
