@@ -1,19 +1,13 @@
-import { Redis } from "@upstash/redis";
+import { put, list } from "@vercel/blob";
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-});
-
-// Each "file" becomes a Redis key, e.g. "appointments.json" -> key "appointments"
-function toKey(filename: string): string {
-  return filename.replace(".json", "");
-}
+// Store JSON data as Blob files at predictable paths
 
 export async function readJsonFile<T>(filename: string): Promise<T[]> {
   try {
-    const data = await redis.get<T[]>(toKey(filename));
-    return data ?? [];
+    const { blobs } = await list({ prefix: `data/${filename}` });
+    if (blobs.length === 0) return [];
+    const response = await fetch(blobs[0].url);
+    return (await response.json()) as T[];
   } catch {
     return [];
   }
@@ -23,7 +17,10 @@ export async function writeJsonFile<T>(
   filename: string,
   data: T[]
 ): Promise<void> {
-  await redis.set(toKey(filename), JSON.stringify(data));
+  await put(`data/${filename}`, JSON.stringify(data), {
+    access: "public",
+    addRandomSuffix: false,
+  });
 }
 
 export async function appendToJsonFile<T>(

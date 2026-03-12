@@ -1,10 +1,4 @@
-import { randomUUID } from "crypto";
-import { Redis } from "@upstash/redis";
-
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-});
+import { createHmac } from "crypto";
 
 export const SESSION_COOKIE_NAME = "admin_session";
 export const SESSION_EXPIRY = 8 * 60 * 60; // 8 hours in seconds
@@ -14,17 +8,30 @@ export function verifyPassword(password: string): boolean {
   return password === adminPassword;
 }
 
-export async function createSession(): Promise<string> {
-  const token = randomUUID();
-  await redis.set(`session:${token}`, JSON.stringify({ createdAt: Date.now() }), { ex: SESSION_EXPIRY });
-  return token;
+// Stateless signed cookie — no database needed
+export function createSession(): string {
+  const timestamp = Date.now();
+  const secret = process.env.ADMIN_PASSWORD || "admin123";
+  const hmac = createHmac("sha256", secret)
+    .update(String(timestamp))
+    .digest("hex");
+  return `${timestamp}:${hmac}`;
 }
 
-export async function validateSession(token: string): Promise<boolean> {
-  const session = await redis.get(`session:${token}`);
-  return session !== null;
-}
-
-export async function clearSession(token: string): Promise<void> {
-  await redis.del(`session:${token}`);
+export function validateSession(token: string): boolean {
+  try {
+    const [timestampStr, hmac] = token.split(":");
+    const timestamp = Number(timestampStr);
+    if (isNaN(timestamp) || !hmac) return false;
+    // Check expiry
+    if (Date.now() - timestamp > SESSION_EXPIRY * 1000) return false;
+    // Verify signature
+    const secret = process.env.ADMIN_PASSWORD || "admin123";
+    const expected = createHmac("sha256", secret)
+      .update(String(timestamp))
+      .digest("hex");
+    return hmac === expected;
+  } catch {
+    return false;
+  }
 }

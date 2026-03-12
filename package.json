@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@upstash/redis": "^1.36.4",
     "@vercel/blob": "^2.3.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.35.2",
