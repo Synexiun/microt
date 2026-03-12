@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g2-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="g2-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="g2-glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g2-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g2-glow)"/>
+  <!-- Elegant lip art -->
+  <ellipse cx="200" cy="200" rx="80" ry="50" fill="#E8A0BF" opacity="0.05" filter="url(#g2-soft)"/>
+  <!-- Upper lip -->
+  <path d="M120,195 C145,182 170,172 190,175 C198,177 205,170 210,165 C215,170 222,177 230,175 C250,172 275,182 300,195" fill="none" stroke="url(#g2-gold)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Lower lip -->
+  <path d="M120,195 C140,200 170,230 200,238 C230,230 260,200 300,195" fill="none" stroke="url(#g2-gold)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Soft fill -->
+  <path d="M130,195 C150,185 175,178 195,178 C203,179 208,173 210,168 C212,173 217,179 225,178 C245,178 270,185 290,195 C270,200 245,225 210,232 C175,225 150,200 130,195Z" fill="#E8A0BF" opacity="0.1"/>
+  <!-- Sparkles -->
+  <g fill="#D4AF37" opacity="0.5">
+    <circle cx="170" cy="180" r="1.5"/>
+    <circle cx="210" cy="168" r="2"/>
+    <circle cx="250" cy="180" r="1.5"/>
+    <circle cx="200" cy="228" r="1.5"/>
+    <circle cx="160" cy="200" r="1"/>
+    <circle cx="260" cy="200" r="1"/>
+  </g>
+  <!-- Decorative curves -->
+  <path d="M80,280 C130,270 200,275 270,270 C310,268 340,272 360,280" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <path d="M80,120 C130,130 200,125 270,130 C310,132 340,128 360,120" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <!-- Frame -->
+  <rect x="8" y="8" width="384" height="384" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="200" cy="8" r="2" fill="#D4AF37" opacity="0.3"/>
+  <circle cx="200" cy="392" r="2" fill="#D4AF37" opacity="0.3"/>
+</svg>

@@ -106,25 +106,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* Social links */}
             <div className="px-10 pb-10 flex gap-6">
-              {SOCIAL_LINKS.instagram && SOCIAL_LINKS.instagram !== '#' ? (
-                <a
-                  href={SOCIAL_LINKS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gold transition-colors"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-              ) : (
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-gold transition-colors"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-              )}
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gold transition-colors"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
               <a
                 href={SOCIAL_LINKS.tiktok}
                 target="_blank"

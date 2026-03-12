@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="artist-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="artist-gold-v" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="artist-glow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="artist-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#C9A96E" stop-opacity="0.7"/>
+      <stop offset="70%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="artist-soft-glow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <clipPath id="frame-clip">
+      <rect x="40" y="40" width="520" height="720" rx="4"/>
+    </clipPath>
+  </defs>
+  <!-- Dark background -->
+  <rect width="600" height="800" fill="#0A0A0A"/>
+  <!-- Subtle glow behind portrait -->
+  <rect width="600" height="800" fill="url(#artist-glow)"/>
+  <!-- Decorative frame - outer -->
+  <rect x="30" y="30" width="540" height="740" rx="4" fill="none" stroke="url(#artist-gold)" stroke-width="1" opacity="0.5"/>
+  <!-- Decorative frame - inner -->
+  <rect x="45" y="45" width="510" height="710" rx="2" fill="none" stroke="url(#artist-gold)" stroke-width="0.5" opacity="0.3"/>
+  <!-- Gold corners - top left -->
+  <path d="M30,80 L30,30 L80,30" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M35,70 L35,35 L70,35" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+  <!-- Gold corners - top right -->
+  <path d="M520,30 L570,30 L570,80" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M530,35 L565,35 L565,70" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+  <!-- Gold corners - bottom left -->
+  <path d="M30,720 L30,770 L80,770" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M35,730 L35,765 L70,765" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+  <!-- Gold corners - bottom right -->
+  <path d="M570,720 L570,770 L520,770" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M565,730 L565,765 L530,765" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+  <!-- Woman's silhouette - elegant profile facing right -->
+  <g clip-path="url(#frame-clip)">
+    <!-- Soft glow behind head -->
+    <ellipse cx="300" cy="300" rx="120" ry="150" fill="#C9A96E" opacity="0.04" filter="url(#artist-soft-glow)"/>
+    <!-- Hair flowing lines -->
+    <path d="M320,120 C340,110 360,115 370,130 C385,155 380,180 375,210 C370,250 365,290 368,330 C372,380 380,430 375,480 C370,520 360,550 345,570 C330,590 310,600 290,605" fill="none" stroke="url(#artist-stroke)" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M310,125 C325,118 345,120 355,135 C370,160 368,190 365,220 C360,260 358,300 362,340 C366,385 372,435 368,485 C364,525 356,555 342,575" fill="none" stroke="url(#artist-stroke)" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+    <path d="M300,130 C315,125 335,128 348,142 C360,165 358,195 355,228 C350,268 350,308 354,348 C358,393 362,438 358,488" fill="none" stroke="url(#artist-stroke)" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/>
+    <!-- Forehead and face profile -->
+    <path d="M310,125 C290,128 270,140 260,165 C250,190 248,210 250,225" fill="none" stroke="url(#artist-stroke)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Nose bridge and nose -->
+    <path d="M250,225 C248,240 245,255 240,268 C237,278 235,285 238,290 C242,296 248,295 252,290" fill="none" stroke="url(#artist-stroke)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Upper lip, lips, chin -->
+    <path d="M252,290 C255,298 258,305 255,310 C252,316 248,320 250,325 C253,332 260,336 265,338" fill="none" stroke="url(#artist-stroke)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Chin and jawline -->
+    <path d="M265,338 C272,345 280,350 288,352 C300,355 315,352 328,344 C340,336 350,325 358,310 C365,296 370,280 372,265" fill="none" stroke="url(#artist-stroke)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Neck -->
+    <path d="M288,352 C285,370 282,395 280,420 C278,445 280,465 282,480" fill="none" stroke="url(#artist-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M328,344 C332,365 335,390 336,415 C337,440 336,460 334,475" fill="none" stroke="url(#artist-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Shoulder lines -->
+    <path d="M282,480 C270,500 240,520 200,535 C170,545 140,550 110,552" fill="none" stroke="url(#artist-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M334,475 C346,498 370,520 410,535 C440,545 470,550 500,552" fill="none" stroke="url(#artist-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Eye -->
+    <path d="M265,235 C270,232 278,231 285,233 C290,235 293,238 290,241 C287,244 280,245 273,243 C268,241 265,238 265,235Z" fill="none" stroke="url(#artist-stroke)" stroke-width="1.2"/>
+    <!-- Eyebrow -->
+    <path d="M258,222 C265,218 278,216 292,218 C298,219 302,221 300,223" fill="none" stroke="url(#artist-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Eyelash accent -->
+    <path d="M265,235 C262,233 260,230 259,228" fill="none" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round"/>
+    <!-- Ear hint -->
+    <path d="M358,240 C365,235 370,242 368,255 C366,265 360,272 355,270" fill="none" stroke="url(#artist-stroke)" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+    <!-- Lip detail -->
+    <path d="M248,318 C252,315 256,316 258,318" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.6"/>
+    <!-- Decorative elements around portrait -->
+    <!-- Small gold dots near hair -->
+    <circle cx="385" cy="200" r="1.5" fill="#D4AF37" opacity="0.5"/>
+    <circle cx="390" cy="250" r="1" fill="#C9A96E" opacity="0.4"/>
+    <circle cx="388" cy="350" r="1.2" fill="#D4AF37" opacity="0.3"/>
+    <circle cx="230" cy="180" r="1" fill="#C9A96E" opacity="0.4"/>
+    <circle cx="225" cy="300" r="1.5" fill="#D4AF37" opacity="0.3"/>
+    <!-- Clothing/drape suggestion -->
+    <path d="M110,552 C120,580 140,620 170,660 C200,700 240,730 300,750" fill="none" stroke="url(#artist-stroke)" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+    <path d="M500,552 C490,580 470,620 440,660 C410,700 370,730 300,750" fill="none" stroke="url(#artist-stroke)" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+    <!-- V-neckline -->
+    <path d="M230,540 C260,570 280,600 300,640" fill="none" stroke="url(#artist-stroke)" stroke-width="0.8" opacity="0.4"/>
+    <path d="M380,540 C350,570 330,600 300,640" fill="none" stroke="url(#artist-stroke)" stroke-width="0.8" opacity="0.4"/>
+  </g>
+  <!-- Corner decorative flourishes -->
+  <circle cx="30" cy="30" r="3" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="570" cy="30" r="3" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="30" cy="770" r="3" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="570" cy="770" r="3" fill="#D4AF37" opacity="0.7"/>
+</svg>

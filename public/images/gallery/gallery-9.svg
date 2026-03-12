@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g9-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <linearGradient id="g9-transform" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.15"/>
+      <stop offset="40%" stop-color="#D4AF37" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.9"/>
+    </linearGradient>
+    <radialGradient id="g9-glow" cx="60%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g9-glow)"/>
+  <!-- Before/after eyeliner transformation -->
+  <!-- Left - bare eye -->
+  <g opacity="0.3">
+    <path d="M30,195 C50,170 80,158 110,155 C130,154 145,165 155,180" fill="none" stroke="#C9A96E" stroke-width="1" stroke-linecap="round"/>
+    <path d="M30,195 C50,215 80,225 110,228 C130,225 145,212 155,195" fill="none" stroke="#C9A96E" stroke-width="0.8" stroke-linecap="round"/>
+    <circle cx="95" cy="192" r="18" fill="none" stroke="#C9A96E" stroke-width="0.5"/>
+    <circle cx="95" cy="192" r="8" fill="#1a1a1a"/>
+  </g>
+  <!-- Center divider -->
+  <line x1="195" y1="100" x2="195" y2="300" stroke="#D4AF37" stroke-width="0.8" opacity="0.3"/>
+  <!-- Right - dramatic eyeliner eye -->
+  <g>
+    <!-- Bold upper liner -->
+    <path d="M235,195 C260,160 295,142 330,140 C355,140 375,155 385,175" fill="none" stroke="url(#g9-gold)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Wing -->
+    <path d="M380,180 C385,172 392,162 398,155" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+    <!-- Lower lid -->
+    <path d="M240,198 C265,225 300,238 330,240 C355,238 375,222 388,200" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.5"/>
+    <!-- Iris -->
+    <circle cx="320" cy="192" r="25" fill="none" stroke="#C9A96E" stroke-width="0.6" opacity="0.4"/>
+    <circle cx="320" cy="192" r="10" fill="#0A0A0A" opacity="0.6"/>
+    <!-- Light catch -->
+    <circle cx="314" cy="186" r="3" fill="#D4AF37" opacity="0.1"/>
+    <!-- Lashes -->
+    <g stroke="#D4AF37" stroke-linecap="round" fill="none" opacity="0.6">
+      <path d="M260,172 C258,160 254,148 250,140" stroke-width="0.8"/>
+      <path d="M280,160 C280,148 278,134 276,124" stroke-width="0.8"/>
+      <path d="M305,150 C306,138 308,126 312,118" stroke-width="0.9"/>
+      <path d="M330,148 C334,136 340,126 348,118" stroke-width="0.9"/>
+      <path d="M355,158 C362,148 370,138 378,132" stroke-width="0.8"/>
+      <path d="M372,172 C378,164 386,155 394,148" stroke-width="0.8"/>
+    </g>
+    <!-- Shimmer -->
+    <g fill="#D4AF37" opacity="0.5">
+      <circle cx="270" cy="155" r="1.2"/>
+      <circle cx="310" cy="142" r="1.5"/>
+      <circle cx="350" cy="150" r="1.2"/>
+      <circle cx="390" cy="160" r="1"/>
+    </g>
+  </g>
+  <!-- Decorative elements -->
+  <path d="M60,330 Q195,318 340,330" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <rect x="10" y="10" width="380" height="380" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="195" cy="330" r="2" fill="#D4AF37" opacity="0.3"/>
+</svg>

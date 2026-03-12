@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="mb-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <linearGradient id="mb-gold-v" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="mb-glow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#C9A96E" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="mb-blur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="mb-soft">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Dark background -->
+  <rect width="600" height="400" fill="#0A0A0A"/>
+  <!-- Golden glow behind brow -->
+  <ellipse cx="300" cy="185" rx="200" ry="80" fill="#D4AF37" opacity="0.08" filter="url(#mb-blur)"/>
+  <rect width="600" height="400" fill="url(#mb-glow)"/>
+  <!-- Eyebrow arch shape - main outline -->
+  <path d="M120,210 C150,170 200,145 280,140 C330,138 370,145 420,160 C450,170 475,182 490,200 C495,208 492,215 485,218 C470,225 440,228 400,225 C350,222 290,218 240,222 C200,225 160,230 130,225 C122,223 118,217 120,210Z" fill="none" stroke="url(#mb-gold)" stroke-width="1.5" opacity="0.6"/>
+  <!-- Hair-stroke lines fanning in an arch -->
+  <g stroke="url(#mb-gold-v)" stroke-linecap="round" fill="none">
+    <!-- Inner hair strokes - fine lines -->
+    <path d="M140,215 C148,198 158,185 170,178" stroke-width="0.8" opacity="0.7"/>
+    <path d="M155,218 C162,200 172,186 185,175" stroke-width="0.9" opacity="0.75"/>
+    <path d="M170,220 C178,200 190,184 205,172" stroke-width="1" opacity="0.8"/>
+    <path d="M188,220 C196,198 210,182 228,170" stroke-width="1" opacity="0.85"/>
+    <path d="M208,218 C216,196 230,178 250,166" stroke-width="1.1" opacity="0.85"/>
+    <path d="M228,216 C236,194 252,176 272,162" stroke-width="1.1" opacity="0.9"/>
+    <path d="M250,214 C258,192 274,172 296,158" stroke-width="1.1" opacity="0.9"/>
+    <path d="M272,212 C280,190 296,170 318,155" stroke-width="1.1" opacity="0.9"/>
+    <path d="M295,210 C302,190 318,168 340,154" stroke-width="1" opacity="0.85"/>
+    <path d="M318,210 C324,192 338,172 358,158" stroke-width="1" opacity="0.85"/>
+    <path d="M340,212 C346,194 358,176 376,164" stroke-width="0.9" opacity="0.8"/>
+    <path d="M362,214 C366,198 376,182 392,172" stroke-width="0.9" opacity="0.75"/>
+    <path d="M382,216 C386,200 394,188 406,180" stroke-width="0.8" opacity="0.7"/>
+    <path d="M400,218 C404,204 410,192 420,186" stroke-width="0.8" opacity="0.65"/>
+    <path d="M418,220 C420,208 426,198 435,192" stroke-width="0.7" opacity="0.6"/>
+    <path d="M440,222 C440,212 444,204 450,198" stroke-width="0.7" opacity="0.55"/>
+    <path d="M458,222 C458,214 460,208 464,204" stroke-width="0.6" opacity="0.5"/>
+    <!-- Second layer - slightly offset for density -->
+    <path d="M148,217 C156,200 166,186 178,177" stroke-width="0.6" opacity="0.5"/>
+    <path d="M178,220 C186,200 198,184 215,172" stroke-width="0.7" opacity="0.55"/>
+    <path d="M218,218 C226,196 242,178 262,164" stroke-width="0.7" opacity="0.6"/>
+    <path d="M260,214 C268,192 284,172 306,158" stroke-width="0.7" opacity="0.6"/>
+    <path d="M305,210 C312,192 328,170 348,156" stroke-width="0.7" opacity="0.55"/>
+    <path d="M350,212 C356,196 368,178 386,168" stroke-width="0.6" opacity="0.5"/>
+    <path d="M390,218 C394,204 402,192 414,184" stroke-width="0.6" opacity="0.45"/>
+    <path d="M430,222 C432,210 436,202 442,196" stroke-width="0.5" opacity="0.4"/>
+  </g>
+  <!-- Subtle shimmer dots along the brow -->
+  <g fill="#D4AF37" opacity="0.5">
+    <circle cx="180" cy="190" r="1.2"/>
+    <circle cx="220" cy="178" r="1"/>
+    <circle cx="260" cy="168" r="1.5"/>
+    <circle cx="300" cy="162" r="1.2"/>
+    <circle cx="340" cy="164" r="1"/>
+    <circle cx="380" cy="175" r="1.2"/>
+    <circle cx="420" cy="190" r="1"/>
+    <circle cx="460" cy="205" r="0.8"/>
+  </g>
+  <!-- Decorative line elements -->
+  <line x1="60" y1="320" x2="540" y2="320" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <line x1="100" y1="325" x2="500" y2="325" stroke="#D4AF37" stroke-width="0.3" opacity="0.15"/>
+  <!-- Bottom accent dots -->
+  <circle cx="200" cy="350" r="2" fill="#D4AF37" opacity="0.3"/>
+  <circle cx="300" cy="350" r="2.5" fill="#C9A96E" opacity="0.4"/>
+  <circle cx="400" cy="350" r="2" fill="#D4AF37" opacity="0.3"/>
+</svg>

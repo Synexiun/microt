@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g12-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <linearGradient id="g12-gold-h" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="g12-glow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g12-soft">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="g12-sparkle">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g12-glow)"/>
+  <!-- Luxury abstract - flowing golden curves with scattered elements -->
+  <!-- Large flowing curves -->
+  <path d="M-20,300 C80,250 160,180 200,150 C240,120 320,100 420,150" fill="none" stroke="url(#g12-gold-h)" stroke-width="1.5" opacity="0.5"/>
+  <path d="M-20,320 C80,270 160,200 200,170 C240,140 320,120 420,170" fill="none" stroke="url(#g12-gold-h)" stroke-width="1" opacity="0.35"/>
+  <path d="M-20,280 C80,230 160,160 200,130 C240,100 320,80 420,130" fill="none" stroke="url(#g12-gold-h)" stroke-width="0.8" opacity="0.25"/>
+  <!-- Reverse curves -->
+  <path d="M-20,120 C80,170 160,220 200,250 C240,280 320,290 420,250" fill="none" stroke="url(#g12-gold-h)" stroke-width="0.8" opacity="0.2"/>
+  <!-- Central decorative element - abstract brow/eye fusion -->
+  <g transform="translate(200,200)">
+    <!-- Circular ornament -->
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#D4AF37" stroke-width="0.3" opacity="0.1"/>
+    <!-- Abstract brow within circle -->
+    <path d="M-50,-5 C-30,-25 -5,-35 20,-36 C38,-35 50,-28 55,-18 C56,-12 52,-8 46,-6 C35,-2 15,0 -5,-2 C-22,-3 -40,0 -48,-2Z" fill="none" stroke="url(#g12-gold)" stroke-width="1.2" opacity="0.6"/>
+    <!-- Radiating dots -->
+    <g fill="#D4AF37" opacity="0.4">
+      <circle cx="0" cy="-70" r="2"/>
+      <circle cx="60" cy="-35" r="1.8"/>
+      <circle cx="60" cy="35" r="1.8"/>
+      <circle cx="0" cy="70" r="2"/>
+      <circle cx="-60" cy="35" r="1.8"/>
+      <circle cx="-60" cy="-35" r="1.8"/>
+    </g>
+  </g>
+  <!-- Scattered gold particles -->
+  <g filter="url(#g12-sparkle)" fill="#D4AF37" opacity="0.4">
+    <circle cx="60" cy="80" r="2"/>
+    <circle cx="340" cy="80" r="2"/>
+    <circle cx="80" cy="320" r="2"/>
+    <circle cx="320" cy="320" r="2"/>
+    <circle cx="50" cy="200" r="1.5"/>
+    <circle cx="350" cy="200" r="1.5"/>
+    <circle cx="200" cy="60" r="1.5"/>
+    <circle cx="200" cy="340" r="1.5"/>
+  </g>
+  <!-- Tiny scattered particles -->
+  <g fill="#D4AF37" opacity="0.25">
+    <circle cx="30" cy="50" r="0.8"/>
+    <circle cx="110" cy="40" r="0.6"/>
+    <circle cx="290" cy="45" r="0.7"/>
+    <circle cx="370" cy="55" r="0.8"/>
+    <circle cx="45" cy="350" r="0.7"/>
+    <circle cx="130" cy="360" r="0.6"/>
+    <circle cx="280" cy="355" r="0.8"/>
+    <circle cx="360" cy="345" r="0.7"/>
+    <circle cx="30" cy="140" r="0.6"/>
+    <circle cx="370" cy="260" r="0.6"/>
+  </g>
+  <!-- Art deco corner accents -->
+  <g stroke="#D4AF37" fill="none" opacity="0.3">
+    <path d="M15,15 L45,15" stroke-width="1.5"/>
+    <path d="M15,15 L15,45" stroke-width="1.5"/>
+    <path d="M385,15 L355,15" stroke-width="1.5"/>
+    <path d="M385,15 L385,45" stroke-width="1.5"/>
+    <path d="M15,385 L45,385" stroke-width="1.5"/>
+    <path d="M15,385 L15,355" stroke-width="1.5"/>
+    <path d="M385,385 L355,385" stroke-width="1.5"/>
+    <path d="M385,385 L385,355" stroke-width="1.5"/>
+  </g>
+</svg>

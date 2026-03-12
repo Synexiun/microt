@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g3-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <radialGradient id="g3-glow" cx="50%" cy="40%" r="35%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g3-blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g3-glow)"/>
+  <!-- Eye art with eyeliner -->
+  <!-- Eye shape -->
+  <path d="M80,200 C120,160 170,140 200,138 C230,140 280,160 320,200" fill="none" stroke="url(#g3-gold)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M80,200 C120,235 170,250 200,252 C230,250 280,235 320,200" fill="none" stroke="url(#g3-gold)" stroke-width="1" opacity="0.5"/>
+  <!-- Wing -->
+  <path d="M315,200 C325,195 340,185 355,175" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+  <!-- Iris -->
+  <circle cx="200" cy="198" r="32" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="200" cy="198" r="14" fill="#0A0A0A" opacity="0.6"/>
+  <!-- Lashes -->
+  <g stroke="#D4AF37" stroke-linecap="round" fill="none" opacity="0.6">
+    <path d="M110,182 C108,168 104,155 98,145" stroke-width="0.8"/>
+    <path d="M135,165 C134,150 130,136 126,126" stroke-width="0.9"/>
+    <path d="M160,152 C160,138 158,122 156,112" stroke-width="0.9"/>
+    <path d="M185,142 C186,128 188,114 190,104" stroke-width="1"/>
+    <path d="M210,140 C214,126 218,112 224,104" stroke-width="1"/>
+    <path d="M240,148 C246,136 252,122 260,114" stroke-width="0.9"/>
+    <path d="M265,160 C272,148 280,136 290,128" stroke-width="0.9"/>
+    <path d="M290,175 C298,165 308,154 318,148" stroke-width="0.8"/>
+  </g>
+  <!-- Shimmer dots -->
+  <g filter="url(#g3-blur)" fill="#D4AF37" opacity="0.5">
+    <circle cx="140" cy="160" r="1.5"/>
+    <circle cx="200" cy="140" r="2"/>
+    <circle cx="260" cy="160" r="1.5"/>
+    <circle cx="340" cy="180" r="1.5"/>
+  </g>
+  <!-- Decorative elements -->
+  <path d="M60,310 Q200,295 340,310" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <rect x="10" y="10" width="380" height="380" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <g fill="#D4AF37" opacity="0.35">
+    <circle cx="18" cy="18" r="1.5"/>
+    <circle cx="382" cy="18" r="1.5"/>
+    <circle cx="18" cy="382" r="1.5"/>
+    <circle cx="382" cy="382" r="1.5"/>
+  </g>
+</svg>

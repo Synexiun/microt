@@ -13,20 +13,20 @@ interface AnimatedSectionProps {
 
 const variants: Record<string, Variants> = {
   up: {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 80, filter: 'blur(10px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
   },
   left: {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x: -80, filter: 'blur(10px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)' },
   },
   right: {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x: 80, filter: 'blur(10px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)' },
   },
   fade: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
+    hidden: { opacity: 0, filter: 'blur(8px)' },
+    visible: { opacity: 1, filter: 'blur(0px)' },
   },
 };
 
@@ -43,7 +43,13 @@ export default function AnimatedSection({
       whileInView="visible"
       viewport={{ once, margin: '-100px' }}
       variants={variants[direction]}
-      transition={{ duration: 0.7, ease: 'easeOut', delay }}
+      transition={{
+        type: 'spring',
+        stiffness: 100,
+        damping: 30,
+        delay,
+        filter: { duration: 0.6, delay },
+      }}
       className={className}
     >
       {children}

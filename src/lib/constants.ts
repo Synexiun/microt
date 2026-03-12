@@ -4,8 +4,10 @@ export const BRAND = {
   description:
     "Velvet Brow Studio is a luxury permanent makeup studio in Costa Mesa, CA, specializing in microblading, PhiBrows, combo brows, lip blush, and permanent eyeliner. Our expert artists combine artistry with precision to enhance your natural beauty.",
   location: "Costa Mesa, CA",
-  phone: "949-555-0123",
+  address: "1847 Newport Blvd, Suite 200, Costa Mesa, CA 92627",
+  phone: "(949) 555-0173",
   email: "hello@velvetbrowstudio.com",
+  instagram: "@velvetbrowstudio",
 } as const;
 
 export const BUSINESS_HOURS: Record<string, { open: string; close: string } | null> = {
@@ -19,7 +21,7 @@ export const BUSINESS_HOURS: Record<string, { open: string; close: string } | nu
 };
 
 export const SOCIAL_LINKS = {
-  instagram: "#",
+  instagram: "https://instagram.com/velvetbrowstudio",
   tiktok: "#",
   facebook: "#",
 } as const;

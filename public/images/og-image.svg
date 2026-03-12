@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="og-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="og-gold-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#D4AF37" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#C9A96E" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#D4AF37" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="og-glow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect width="1200" height="630" fill="url(#og-glow)"/>
+  <!-- Decorative border -->
+  <rect x="30" y="30" width="1140" height="570" rx="4" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.25"/>
+  <rect x="40" y="40" width="1120" height="550" rx="2" fill="none" stroke="#D4AF37" stroke-width="0.3" opacity="0.15"/>
+  <!-- Gold corners -->
+  <path d="M30,80 L30,30 L80,30" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M1120,30 L1170,30 L1170,80" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M30,550 L30,600 L80,600" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M1170,550 L1170,600 L1120,600" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <!-- Corner dots -->
+  <circle cx="30" cy="30" r="3" fill="#D4AF37" opacity="0.4"/>
+  <circle cx="1170" cy="30" r="3" fill="#D4AF37" opacity="0.4"/>
+  <circle cx="30" cy="600" r="3" fill="#D4AF37" opacity="0.4"/>
+  <circle cx="1170" cy="600" r="3" fill="#D4AF37" opacity="0.4"/>
+  <!-- Decorative wave patterns at top and bottom -->
+  <path d="M0,50 C200,40 400,60 600,45 C800,30 1000,55 1200,42" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.08"/>
+  <path d="M0,580 C200,590 400,575 600,585 C800,595 1000,578 1200,588" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.08"/>
+  <!-- Decorative line above title -->
+  <line x1="350" y1="210" x2="850" y2="210" stroke="url(#og-gold-line)" stroke-width="1"/>
+  <!-- Small flourish above -->
+  <path d="M560,205 Q580,195 600,200 Q620,195 640,205" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+  <!-- Main title text -->
+  <text x="600" y="285" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="normal" fill="url(#og-gold)" letter-spacing="6">Velvet Brow Studio</text>
+  <!-- Decorative line below title -->
+  <line x1="300" y1="310" x2="900" y2="310" stroke="url(#og-gold-line)" stroke-width="1"/>
+  <!-- Diamond accent on line -->
+  <path d="M600,306 L606,310 L600,314 L594,310 Z" fill="#D4AF37" opacity="0.5"/>
+  <!-- Tagline -->
+  <text x="600" y="375" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#C9A96E" letter-spacing="4" opacity="0.7">Where Precision Meets Beauty</text>
+  <!-- Lower decorative line -->
+  <line x1="400" y1="400" x2="800" y2="400" stroke="url(#og-gold-line)" stroke-width="0.5" opacity="0.5"/>
+  <!-- Small flourish below tagline -->
+  <path d="M570,410 Q585,418 600,415 Q615,418 630,410" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+  <!-- Abstract brow motif - subtle background element -->
+  <path d="M380,460 C430,440 500,430 580,428 C640,427 700,432 760,445 C780,450 785,456 780,460 C770,466 740,468 700,466 C640,464 560,465 500,470 C460,472 420,468 395,462Z" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.1"/>
+  <!-- Scattered gold particles -->
+  <g fill="#D4AF37" opacity="0.2">
+    <circle cx="150" cy="150" r="1.5"/>
+    <circle cx="1050" cy="150" r="1.5"/>
+    <circle cx="150" cy="480" r="1.5"/>
+    <circle cx="1050" cy="480" r="1.5"/>
+    <circle cx="100" cy="315" r="1"/>
+    <circle cx="1100" cy="315" r="1"/>
+    <circle cx="600" cy="470" r="1.5"/>
+    <circle cx="400" cy="510" r="1"/>
+    <circle cx="800" cy="510" r="1"/>
+    <circle cx="250" cy="250" r="1"/>
+    <circle cx="950" cy="250" r="1"/>
+    <circle cx="200" cy="400" r="0.8"/>
+    <circle cx="1000" cy="400" r="0.8"/>
+  </g>
+</svg>

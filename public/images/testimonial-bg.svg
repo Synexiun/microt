@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600">
+  <defs>
+    <linearGradient id="test-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#C9A96E" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="test-gold-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="test-glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="test-blur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+  <!-- Dark background -->
+  <rect width="1920" height="600" fill="#0A0A0A"/>
+  <rect width="1920" height="600" fill="url(#test-glow)"/>
+  <!-- Large decorative opening quotation mark - left -->
+  <g transform="translate(300, 120)" fill="url(#test-gold)" opacity="0.6">
+    <!-- Left quote curl -->
+    <path d="M0,120 C0,60 40,0 100,0 C100,0 80,20 70,50 C60,80 65,100 90,100 C115,100 130,80 130,55 C130,25 110,0 80,0 C35,0 0,45 0,100 Z" fill="url(#test-gold)"/>
+    <!-- Right quote curl -->
+    <path d="M160,120 C160,60 200,0 260,0 C260,0 240,20 230,50 C220,80 225,100 250,100 C275,100 290,80 290,55 C290,25 270,0 240,0 C195,0 160,45 160,100 Z" fill="url(#test-gold)"/>
+  </g>
+  <!-- Large decorative closing quotation mark - right -->
+  <g transform="translate(1320, 320) rotate(180)" fill="url(#test-gold)" opacity="0.4">
+    <path d="M0,120 C0,60 40,0 100,0 C100,0 80,20 70,50 C60,80 65,100 90,100 C115,100 130,80 130,55 C130,25 110,0 80,0 C35,0 0,45 0,100 Z" fill="url(#test-gold)"/>
+    <path d="M160,120 C160,60 200,0 260,0 C260,0 240,20 230,50 C220,80 225,100 250,100 C275,100 290,80 290,55 C290,25 270,0 240,0 C195,0 160,45 160,100 Z" fill="url(#test-gold)"/>
+  </g>
+  <!-- Subtle glow behind quotes -->
+  <ellipse cx="445" cy="180" rx="200" ry="100" fill="#D4AF37" opacity="0.03" filter="url(#test-blur)"/>
+  <ellipse cx="1475" cy="380" rx="200" ry="100" fill="#D4AF37" opacity="0.02" filter="url(#test-blur)"/>
+  <!-- Decorative lines -->
+  <line x1="200" y1="500" x2="1720" y2="500" stroke="#C9A96E" stroke-width="0.5" opacity="0.1"/>
+  <line x1="300" y1="505" x2="1620" y2="505" stroke="#D4AF37" stroke-width="0.3" opacity="0.08"/>
+  <!-- Top decorative line -->
+  <line x1="200" y1="100" x2="1720" y2="100" stroke="#C9A96E" stroke-width="0.5" opacity="0.1"/>
+  <line x1="300" y1="95" x2="1620" y2="95" stroke="#D4AF37" stroke-width="0.3" opacity="0.08"/>
+  <!-- Scattered subtle dots -->
+  <g fill="#D4AF37" opacity="0.15">
+    <circle cx="200" cy="300" r="2"/>
+    <circle cx="500" cy="450" r="1.5"/>
+    <circle cx="800" cy="150" r="1.5"/>
+    <circle cx="960" cy="500" r="2"/>
+    <circle cx="1200" cy="150" r="1.5"/>
+    <circle cx="1500" cy="450" r="1.5"/>
+    <circle cx="1720" cy="300" r="2"/>
+  </g>
+  <!-- Center accent -->
+  <circle cx="960" cy="300" r="3" fill="#D4AF37" opacity="0.08"/>
+  <circle cx="960" cy="300" r="1" fill="#D4AF37" opacity="0.15"/>
+</svg>

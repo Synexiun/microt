@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="combo-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="combo-shade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="combo-divider" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="30%" stop-color="#D4AF37" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#C9A96E" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="combo-glow-l" cx="25%" cy="45%" r="30%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="combo-glow-r" cx="75%" cy="45%" r="30%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="combo-left-clip">
+      <rect x="0" y="0" width="300" height="400"/>
+    </clipPath>
+    <clipPath id="combo-right-clip">
+      <rect x="300" y="0" width="300" height="400"/>
+    </clipPath>
+    <filter id="combo-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="600" height="400" fill="#0A0A0A"/>
+  <rect width="600" height="400" fill="url(#combo-glow-l)"/>
+  <rect width="600" height="400" fill="url(#combo-glow-r)"/>
+  <!-- LEFT HALF: Hair strokes -->
+  <g clip-path="url(#combo-left-clip)">
+    <!-- Brow shape outline -->
+    <path d="M60,210 C90,172 140,155 200,152 C240,150 270,155 295,165" fill="none" stroke="url(#combo-gold)" stroke-width="1" opacity="0.4"/>
+    <path d="M60,225 C80,228 120,228 180,222 C230,216 270,212 295,215" fill="none" stroke="url(#combo-gold)" stroke-width="1" opacity="0.4"/>
+    <!-- Hair stroke lines - left side -->
+    <g stroke="#D4AF37" stroke-linecap="round" fill="none">
+      <path d="M75,218 C82,200 92,188 104,180" stroke-width="0.9" opacity="0.7"/>
+      <path d="M90,220 C98,200 110,186 124,176" stroke-width="1" opacity="0.75"/>
+      <path d="M108,222 C116,200 130,184 146,173" stroke-width="1" opacity="0.8"/>
+      <path d="M128,222 C136,198 152,180 170,168" stroke-width="1.1" opacity="0.8"/>
+      <path d="M148,220 C156,196 172,176 192,164" stroke-width="1.1" opacity="0.85"/>
+      <path d="M168,218 C176,194 192,174 214,160" stroke-width="1.1" opacity="0.85"/>
+      <path d="M190,216 C198,194 214,172 236,158" stroke-width="1" opacity="0.8"/>
+      <path d="M212,214 C218,196 232,176 252,164" stroke-width="1" opacity="0.75"/>
+      <path d="M234,214 C238,198 248,182 265,172" stroke-width="0.9" opacity="0.7"/>
+      <path d="M255,214 C258,200 266,188 278,180" stroke-width="0.8" opacity="0.65"/>
+      <path d="M275,216 C276,204 282,194 290,188" stroke-width="0.7" opacity="0.55"/>
+      <!-- Second layer strokes -->
+      <path d="M82,219 C90,202 100,188 112,178" stroke-width="0.6" opacity="0.5"/>
+      <path d="M118,222 C126,200 140,182 158,170" stroke-width="0.7" opacity="0.55"/>
+      <path d="M158,219 C166,196 182,176 202,162" stroke-width="0.7" opacity="0.6"/>
+      <path d="M200,216 C206,196 222,174 244,160" stroke-width="0.7" opacity="0.55"/>
+      <path d="M244,214 C248,200 256,184 272,174" stroke-width="0.6" opacity="0.5"/>
+    </g>
+  </g>
+  <!-- RIGHT HALF: Soft shading/gradient fill -->
+  <g clip-path="url(#combo-right-clip)">
+    <!-- Soft shaded brow shape -->
+    <path d="M305,165 C320,158 350,152 390,150 C440,148 480,158 510,175 C530,188 540,202 538,212 C535,220 520,225 500,224 C460,222 400,218 360,222 C330,225 310,228 305,225Z" fill="url(#combo-shade)" opacity="0.6"/>
+    <!-- Gradient layers for soft powder effect -->
+    <path d="M310,168 C330,160 360,154 395,152 C435,150 475,160 505,178 C525,190 535,204 532,212 C528,218 515,222 496,222 C455,220 395,216 355,220 C328,223 312,226 308,222Z" fill="#D4AF37" opacity="0.12" filter="url(#combo-soft)"/>
+    <path d="M320,172 C340,165 370,158 400,156 C430,154 465,162 495,180 C515,192 525,204 522,210 C518,216 506,219 490,218 C450,216 400,214 365,218 C340,220 320,224 315,220Z" fill="#C9A96E" opacity="0.15"/>
+    <path d="M340,178 C360,172 385,166 410,165 C435,164 458,170 478,185 C492,196 498,206 496,212 C490,214 475,216 460,215 C430,213 400,212 380,215 C360,218 340,220 335,216Z" fill="#D4AF37" opacity="0.1"/>
+    <!-- Soft edge outline -->
+    <path d="M305,165 C320,158 350,152 390,150 C440,148 480,158 510,175 C530,188 540,202 538,212 C535,220 520,225 500,224 C460,222 400,218 360,222 C330,225 310,228 305,225" fill="none" stroke="url(#combo-gold)" stroke-width="0.8" opacity="0.4"/>
+  </g>
+  <!-- Golden dividing line -->
+  <line x1="300" y1="100" x2="300" y2="300" stroke="url(#combo-divider)" stroke-width="2"/>
+  <!-- Diamond accent at center of dividing line -->
+  <path d="M300,195 L305,200 L300,205 L295,200 Z" fill="#D4AF37" opacity="0.7"/>
+  <!-- Labels area -->
+  <g fill="#C9A96E" font-family="serif" font-size="11" opacity="0.35">
+    <text x="120" y="290" text-anchor="middle">Hair Strokes</text>
+    <text x="420" y="290" text-anchor="middle">Powder Fill</text>
+  </g>
+  <!-- Decorative bottom line -->
+  <line x1="80" y1="330" x2="520" y2="330" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="300" cy="330" r="2" fill="#D4AF37" opacity="0.4"/>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g11-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <linearGradient id="g11-pink-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.3"/>
+    </linearGradient>
+    <radialGradient id="g11-glow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g11-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g11-glow)"/>
+  <!-- Full face beauty - brows, eye hints, lip -->
+  <!-- Left brow -->
+  <g stroke="url(#g11-gold)" fill="none" stroke-linecap="round" opacity="0.7">
+    <path d="M65,135 C85,118 115,108 150,107 C175,106 192,112 205,122 C208,128 206,132 200,135 C188,140 165,142 140,140 C115,138 85,142 70,140Z" stroke-width="1.2"/>
+    <path d="M80,137 C86,128 98,120 112,114" stroke-width="0.7"/>
+    <path d="M100,138 C106,126 120,116 136,110" stroke-width="0.8"/>
+    <path d="M120,140 C126,126 140,114 158,108" stroke-width="0.8"/>
+    <path d="M142,140 C146,128 156,118 170,112" stroke-width="0.7"/>
+    <path d="M162,138 C164,130 170,122 180,118" stroke-width="0.6"/>
+    <path d="M180,136 C180,130 184,124 190,120" stroke-width="0.5"/>
+  </g>
+  <!-- Right brow -->
+  <g stroke="url(#g11-gold)" fill="none" stroke-linecap="round" opacity="0.7">
+    <path d="M335,135 C315,118 285,108 250,107 C225,106 208,112 195,122 C192,128 194,132 200,135 C212,140 235,142 260,140 C285,138 315,142 330,140Z" stroke-width="1.2"/>
+    <path d="M320,137 C314,128 302,120 288,114" stroke-width="0.7"/>
+    <path d="M300,138 C294,126 280,116 264,110" stroke-width="0.8"/>
+    <path d="M280,140 C274,126 260,114 242,108" stroke-width="0.8"/>
+    <path d="M258,140 C254,128 244,118 230,112" stroke-width="0.7"/>
+    <path d="M238,138 C236,130 230,122 220,118" stroke-width="0.6"/>
+    <path d="M220,136 C220,130 216,124 210,120" stroke-width="0.5"/>
+  </g>
+  <!-- Eyes - minimal -->
+  <g stroke="#C9A96E" fill="none" opacity="0.3">
+    <path d="M100,185 C120,175 145,172 165,175 C175,178 180,182 175,186 C165,190 140,192 120,190 C108,188 100,186 100,185Z" stroke-width="0.8"/>
+    <path d="M300,185 C280,175 255,172 235,175 C225,178 220,182 225,186 C235,190 260,192 280,190 C292,188 300,186 300,185Z" stroke-width="0.8"/>
+  </g>
+  <!-- Nose hint -->
+  <path d="M196,200 C198,220 198,240 195,258" fill="none" stroke="#C9A96E" stroke-width="0.4" opacity="0.15"/>
+  <path d="M204,200 C202,220 202,240 205,258" fill="none" stroke="#C9A96E" stroke-width="0.4" opacity="0.15"/>
+  <!-- Lips -->
+  <g>
+    <path d="M155,295 C170,288 185,283 195,285 C198,286 200,282 202,278 C204,282 206,286 209,285 C219,283 234,288 249,295" fill="none" stroke="url(#g11-gold)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+    <path d="M155,295 C170,298 185,315 202,320 C219,315 234,298 249,295" fill="none" stroke="url(#g11-gold)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+    <path d="M162,295 C175,290 190,287 198,288 C200,284 202,280 202,278 C202,280 204,284 206,288 C214,287 229,290 242,295 C232,298 218,312 202,316 C186,312 172,298 162,295Z" fill="#E8A0BF" opacity="0.08"/>
+  </g>
+  <!-- Decorative gold dots scattered -->
+  <g fill="#D4AF37" opacity="0.3">
+    <circle cx="50" cy="60" r="1.5"/>
+    <circle cx="350" cy="60" r="1.5"/>
+    <circle cx="200" cy="50" r="2"/>
+    <circle cx="200" cy="360" r="2"/>
+    <circle cx="50" cy="340" r="1.5"/>
+    <circle cx="350" cy="340" r="1.5"/>
+  </g>
+  <!-- Elegant frame -->
+  <rect x="10" y="10" width="380" height="380" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+</svg>

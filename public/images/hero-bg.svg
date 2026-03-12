@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <radialGradient id="hero-center-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.15"/>
+      <stop offset="40%" stop-color="#C9A96E" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hero-gold-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="hero-gold-2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#C9A96E" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="hero-gold-3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="hero-particle-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hero-blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <filter id="hero-glow">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <!-- Dark background -->
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <!-- Subtle dark gradient overlay -->
+  <rect width="1920" height="1080" fill="url(#hero-center-glow)"/>
+  <!-- Flowing wave 1 - large sweeping curve -->
+  <path d="M-100,800 C200,750 400,500 700,520 C1000,540 1100,700 1400,600 C1700,500 1800,350 2020,400" fill="none" stroke="url(#hero-gold-1)" stroke-width="1.5" opacity="0.6"/>
+  <path d="M-100,810 C200,760 400,510 700,530 C1000,550 1100,710 1400,610 C1700,510 1800,360 2020,410" fill="none" stroke="url(#hero-gold-1)" stroke-width="0.8" opacity="0.3"/>
+  <!-- Flowing wave 2 -->
+  <path d="M-50,600 C300,550 500,350 800,400 C1100,450 1200,600 1500,500 C1800,400 1900,250 2050,300" fill="none" stroke="url(#hero-gold-2)" stroke-width="1.2" opacity="0.5"/>
+  <path d="M-50,615 C300,565 500,365 800,415 C1100,465 1200,615 1500,515 C1800,415 1900,265 2050,315" fill="none" stroke="url(#hero-gold-2)" stroke-width="0.6" opacity="0.25"/>
+  <!-- Flowing wave 3 - upper -->
+  <path d="M-100,300 C200,250 500,400 800,350 C1100,300 1300,150 1600,200 C1900,250 2000,350 2100,300" fill="none" stroke="url(#hero-gold-3)" stroke-width="1" opacity="0.4"/>
+  <!-- Flowing wave 4 - lower accent -->
+  <path d="M0,900 C300,850 600,750 900,780 C1200,810 1400,900 1700,850 C1900,820 1920,800 1920,800" fill="none" stroke="url(#hero-gold-1)" stroke-width="0.8" opacity="0.35"/>
+  <!-- Additional flowing curves for depth -->
+  <path d="M-200,500 Q400,300 960,540 Q1520,780 2120,480" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <path d="M-100,450 Q500,250 960,490 Q1420,730 2020,430" fill="none" stroke="#D4AF37" stroke-width="0.3" opacity="0.15"/>
+  <path d="M-100,550 Q400,400 960,580 Q1520,760 2020,520" fill="none" stroke="#C9A96E" stroke-width="0.4" opacity="0.18"/>
+  <!-- Gentle fill areas between curves -->
+  <path d="M0,1080 C300,950 600,800 960,850 C1320,900 1600,1000 1920,920 L1920,1080 Z" fill="#C9A96E" opacity="0.03"/>
+  <path d="M0,0 C300,100 600,200 960,150 C1320,100 1600,50 1920,120 L1920,0 Z" fill="#D4AF37" opacity="0.02"/>
+  <!-- Gold particles - scattered dots -->
+  <g filter="url(#hero-blur)" opacity="0.7">
+    <circle cx="150" cy="200" r="2" fill="#D4AF37"/>
+    <circle cx="350" cy="450" r="1.5" fill="#C9A96E"/>
+    <circle cx="520" cy="150" r="1" fill="#D4AF37"/>
+    <circle cx="680" cy="380" r="2.5" fill="#C9A96E"/>
+    <circle cx="890" cy="280" r="1.5" fill="#D4AF37"/>
+    <circle cx="1050" cy="500" r="2" fill="#C9A96E"/>
+    <circle cx="1200" cy="180" r="1" fill="#D4AF37"/>
+    <circle cx="1380" cy="420" r="2" fill="#C9A96E"/>
+    <circle cx="1550" cy="300" r="1.5" fill="#D4AF37"/>
+    <circle cx="1720" cy="480" r="1" fill="#C9A96E"/>
+    <circle cx="1850" cy="220" r="2" fill="#D4AF37"/>
+    <circle cx="250" cy="650" r="1.5" fill="#C9A96E"/>
+    <circle cx="480" cy="720" r="1" fill="#D4AF37"/>
+    <circle cx="750" cy="680" r="2" fill="#C9A96E"/>
+    <circle cx="1000" cy="750" r="1.5" fill="#D4AF37"/>
+    <circle cx="1280" cy="680" r="1" fill="#C9A96E"/>
+    <circle cx="1500" cy="720" r="2" fill="#D4AF37"/>
+    <circle cx="1700" cy="650" r="1.5" fill="#C9A96E"/>
+    <circle cx="100" cy="900" r="1" fill="#D4AF37"/>
+    <circle cx="400" cy="880" r="1.5" fill="#C9A96E"/>
+    <circle cx="650" cy="920" r="1" fill="#D4AF37"/>
+    <circle cx="960" cy="890" r="2" fill="#C9A96E"/>
+    <circle cx="1150" cy="930" r="1" fill="#D4AF37"/>
+    <circle cx="1400" cy="870" r="1.5" fill="#C9A96E"/>
+    <circle cx="1650" cy="900" r="1" fill="#D4AF37"/>
+    <circle cx="1880" cy="850" r="2" fill="#C9A96E"/>
+  </g>
+  <!-- Brighter accent particles -->
+  <g filter="url(#hero-glow)" opacity="0.5">
+    <circle cx="480" cy="350" r="3" fill="#D4AF37"/>
+    <circle cx="960" cy="540" r="4" fill="#C9A96E"/>
+    <circle cx="1440" cy="400" r="3" fill="#D4AF37"/>
+    <circle cx="300" cy="600" r="2.5" fill="#C9A96E"/>
+    <circle cx="1200" cy="650" r="3" fill="#D4AF37"/>
+    <circle cx="1700" cy="550" r="2.5" fill="#C9A96E"/>
+    <circle cx="600" cy="250" r="2" fill="#D4AF37"/>
+    <circle cx="1100" cy="350" r="2.5" fill="#C9A96E"/>
+  </g>
+  <!-- Very subtle tiny particles -->
+  <g opacity="0.4">
+    <circle cx="80" cy="120" r="0.8" fill="#D4AF37"/>
+    <circle cx="220" cy="340" r="0.6" fill="#C9A96E"/>
+    <circle cx="410" cy="100" r="0.7" fill="#D4AF37"/>
+    <circle cx="560" cy="290" r="0.5" fill="#C9A96E"/>
+    <circle cx="730" cy="160" r="0.8" fill="#D4AF37"/>
+    <circle cx="870" cy="430" r="0.6" fill="#C9A96E"/>
+    <circle cx="1020" cy="120" r="0.7" fill="#D4AF37"/>
+    <circle cx="1180" cy="290" r="0.5" fill="#C9A96E"/>
+    <circle cx="1330" cy="160" r="0.8" fill="#D4AF37"/>
+    <circle cx="1490" cy="380" r="0.6" fill="#C9A96E"/>
+    <circle cx="1630" cy="140" r="0.7" fill="#D4AF37"/>
+    <circle cx="1790" cy="340" r="0.5" fill="#C9A96E"/>
+    <circle cx="130" cy="780" r="0.7" fill="#D4AF37"/>
+    <circle cx="330" cy="980" r="0.6" fill="#C9A96E"/>
+    <circle cx="580" cy="830" r="0.8" fill="#D4AF37"/>
+    <circle cx="800" cy="950" r="0.5" fill="#C9A96E"/>
+    <circle cx="1060" cy="820" r="0.7" fill="#D4AF37"/>
+    <circle cx="1300" cy="970" r="0.6" fill="#C9A96E"/>
+    <circle cx="1520" cy="840" r="0.8" fill="#D4AF37"/>
+    <circle cx="1760" cy="960" r="0.5" fill="#C9A96E"/>
+    <circle cx="1900" cy="780" r="0.7" fill="#D4AF37"/>
+  </g>
+</svg>

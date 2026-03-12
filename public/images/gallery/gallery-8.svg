@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g8-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="g8-pink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.15"/>
+    </linearGradient>
+    <radialGradient id="g8-glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g8-soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g8-glow)"/>
+  <!-- Closeup lip detail - artistic macro view -->
+  <ellipse cx="200" cy="200" rx="130" ry="85" fill="#E8A0BF" opacity="0.04" filter="url(#g8-soft)"/>
+  <!-- Full lips, large and detailed -->
+  <!-- Upper lip -->
+  <path d="M80,200 C110,180 145,168 178,172 C192,174 200,165 208,155 C216,165 224,174 238,172 C271,168 306,180 336,200" fill="url(#g8-pink)" stroke="url(#g8-gold)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Lower lip -->
+  <path d="M80,200 C105,208 140,255 190,265 C210,268 230,265 250,258 C290,245 320,208 336,200" fill="url(#g8-pink)" stroke="url(#g8-gold)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Inner lip line -->
+  <path d="M95,200 C140,206 180,210 208,212 C236,210 276,206 321,200" fill="none" stroke="#E8A0BF" stroke-width="0.8" opacity="0.3"/>
+  <!-- Lip texture - subtle vertical lines -->
+  <g stroke="#D4AF37" stroke-width="0.3" opacity="0.15">
+    <path d="M120,195 C122,205 124,218 126,228"/>
+    <path d="M145,190 C146,205 148,225 150,238"/>
+    <path d="M170,188 C170,205 172,228 174,245"/>
+    <path d="M195,192 C194,208 194,230 196,250"/>
+    <path d="M220,192 C220,208 220,230 218,250"/>
+    <path d="M245,188 C244,205 242,228 240,245"/>
+    <path d="M270,190 C268,205 266,225 264,238"/>
+    <path d="M295,195 C292,205 290,218 288,228"/>
+  </g>
+  <!-- Highlight shine -->
+  <ellipse cx="180" cy="230" rx="25" ry="8" fill="#D4AF37" opacity="0.06" filter="url(#g8-soft)"/>
+  <ellipse cx="240" cy="228" rx="20" ry="7" fill="#D4AF37" opacity="0.05" filter="url(#g8-soft)"/>
+  <!-- Sparkle accents -->
+  <g fill="#D4AF37" opacity="0.5">
+    <circle cx="155" cy="175" r="1.5"/>
+    <circle cx="208" cy="158" r="2"/>
+    <circle cx="260" cy="175" r="1.5"/>
+    <circle cx="208" cy="258" r="1.5"/>
+    <circle cx="170" cy="248" r="1"/>
+    <circle cx="248" cy="248" r="1"/>
+  </g>
+  <!-- Star sparkles -->
+  <g stroke="#D4AF37" stroke-width="0.5" opacity="0.4">
+    <line x1="130" y1="155" x2="136" y2="155"/>
+    <line x1="133" y1="152" x2="133" y2="158"/>
+    <line x1="280" y1="155" x2="286" y2="155"/>
+    <line x1="283" y1="152" x2="283" y2="158"/>
+  </g>
+  <!-- Frame -->
+  <rect x="10" y="10" width="380" height="380" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <g fill="#D4AF37" opacity="0.3">
+    <circle cx="18" cy="18" r="1.5"/>
+    <circle cx="382" cy="18" r="1.5"/>
+    <circle cx="18" cy="382" r="1.5"/>
+    <circle cx="382" cy="382" r="1.5"/>
+  </g>
+</svg>

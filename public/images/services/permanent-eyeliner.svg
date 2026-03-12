@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="eye-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="eye-gold-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <radialGradient id="eye-iris" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"/>
+      <stop offset="40%" stop-color="#C9A96E" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0.5"/>
+    </radialGradient>
+    <radialGradient id="eye-glow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="eye-blur">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="eye-shimmer">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  <rect width="600" height="400" fill="#0A0A0A"/>
+  <rect width="600" height="400" fill="url(#eye-glow)"/>
+  <!-- Eye shape - almond form -->
+  <!-- Upper eyelid curve -->
+  <path d="M140,200 C180,155 240,130 300,128 C360,130 420,155 460,200" fill="none" stroke="url(#eye-gold-stroke)" stroke-width="0.8" opacity="0.5"/>
+  <!-- Lower eyelid curve -->
+  <path d="M140,200 C180,240 240,255 300,258 C360,255 420,240 460,200" fill="none" stroke="url(#eye-gold-stroke)" stroke-width="0.8" opacity="0.4"/>
+  <!-- Bold eyeliner - upper lid -->
+  <path d="M130,202 C170,152 235,125 300,123 C365,125 430,152 470,202" fill="none" stroke="url(#eye-gold)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Wing flick -->
+  <path d="M460,200 C470,195 485,185 500,175" fill="none" stroke="url(#eye-gold)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M455,205 C468,200 485,192 500,182" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+  <!-- Inner corner detail -->
+  <path d="M140,200 C135,198 128,200 125,205" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  <!-- Iris -->
+  <ellipse cx="300" cy="195" rx="42" ry="50" fill="url(#eye-iris)" opacity="0.5"/>
+  <ellipse cx="300" cy="195" rx="42" ry="50" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.3"/>
+  <!-- Pupil -->
+  <circle cx="300" cy="195" r="18" fill="#0A0A0A" opacity="0.7"/>
+  <circle cx="300" cy="195" r="18" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.3"/>
+  <!-- Iris detail lines -->
+  <g stroke="#D4AF37" stroke-width="0.3" opacity="0.25">
+    <line x1="300" y1="150" x2="300" y2="175"/>
+    <line x1="275" y1="155" x2="285" y2="178"/>
+    <line x1="325" y1="155" x2="315" y2="178"/>
+    <line x1="260" y1="170" x2="280" y2="185"/>
+    <line x1="340" y1="170" x2="320" y2="185"/>
+    <line x1="260" y1="220" x2="280" y2="208"/>
+    <line x1="340" y1="220" x2="320" y2="208"/>
+    <line x1="275" y1="235" x2="285" y2="212"/>
+    <line x1="325" y1="235" x2="315" y2="212"/>
+  </g>
+  <!-- Light reflection in eye -->
+  <ellipse cx="288" cy="185" rx="5" ry="7" fill="#D4AF37" opacity="0.15"/>
+  <circle cx="312" cy="190" r="2" fill="#D4AF37" opacity="0.2"/>
+  <!-- Elegant lash lines - upper -->
+  <g stroke="#D4AF37" stroke-linecap="round" fill="none">
+    <path d="M168,175 C165,162 160,148 152,138" stroke-width="1" opacity="0.6"/>
+    <path d="M190,162 C188,148 184,134 178,124" stroke-width="1.1" opacity="0.65"/>
+    <path d="M215,150 C214,136 212,120 208,108" stroke-width="1.1" opacity="0.7"/>
+    <path d="M240,140 C240,126 240,110 238,98" stroke-width="1.2" opacity="0.75"/>
+    <path d="M265,133 C266,118 268,102 268,90" stroke-width="1.2" opacity="0.8"/>
+    <path d="M290,128 C292,114 295,98 298,86" stroke-width="1.2" opacity="0.8"/>
+    <path d="M315,128 C318,114 322,98 328,88" stroke-width="1.2" opacity="0.8"/>
+    <path d="M340,133 C344,118 350,104 358,94" stroke-width="1.2" opacity="0.75"/>
+    <path d="M365,140 C370,126 378,112 388,102" stroke-width="1.1" opacity="0.7"/>
+    <path d="M390,150 C396,138 405,124 416,114" stroke-width="1.1" opacity="0.65"/>
+    <path d="M412,162 C420,150 430,136 442,128" stroke-width="1" opacity="0.6"/>
+    <path d="M432,175 C440,164 452,152 464,144" stroke-width="1" opacity="0.55"/>
+    <!-- Shorter accent lashes between -->
+    <path d="M178,168 C176,158 172,148 168,142" stroke-width="0.6" opacity="0.4"/>
+    <path d="M202,156 C200,146 198,134 194,126" stroke-width="0.7" opacity="0.45"/>
+    <path d="M228,145 C228,135 226,122 224,112" stroke-width="0.7" opacity="0.5"/>
+    <path d="M252,136 C254,124 256,112 256,102" stroke-width="0.7" opacity="0.5"/>
+    <path d="M278,130 C280,118 284,106 288,96" stroke-width="0.7" opacity="0.5"/>
+    <path d="M302,127 C306,116 312,104 318,94" stroke-width="0.7" opacity="0.5"/>
+    <path d="M328,130 C333,118 340,106 348,98" stroke-width="0.7" opacity="0.5"/>
+    <path d="M352,136 C358,124 366,112 376,104" stroke-width="0.7" opacity="0.45"/>
+    <path d="M378,146 C384,134 394,122 404,114" stroke-width="0.6" opacity="0.4"/>
+    <path d="M422,168 C430,158 440,148 452,140" stroke-width="0.6" opacity="0.35"/>
+  </g>
+  <!-- Shimmer dots along eyeliner -->
+  <g filter="url(#eye-shimmer)" opacity="0.5">
+    <circle cx="200" cy="155" r="1.5" fill="#D4AF37"/>
+    <circle cx="250" cy="138" r="2" fill="#D4AF37"/>
+    <circle cx="300" cy="128" r="2" fill="#D4AF37"/>
+    <circle cx="350" cy="138" r="2" fill="#D4AF37"/>
+    <circle cx="400" cy="155" r="1.5" fill="#D4AF37"/>
+    <circle cx="475" cy="185" r="1.5" fill="#D4AF37"/>
+    <circle cx="490" cy="178" r="1" fill="#C9A96E"/>
+  </g>
+  <!-- Tiny shimmer particles -->
+  <g fill="#D4AF37">
+    <circle cx="175" cy="145" r="0.6" opacity="0.5"/>
+    <circle cx="225" cy="125" r="0.5" opacity="0.4"/>
+    <circle cx="275" cy="115" r="0.7" opacity="0.5"/>
+    <circle cx="325" cy="115" r="0.6" opacity="0.5"/>
+    <circle cx="375" cy="125" r="0.5" opacity="0.4"/>
+    <circle cx="425" cy="145" r="0.6" opacity="0.5"/>
+    <circle cx="485" cy="172" r="0.5" opacity="0.4"/>
+  </g>
+  <!-- Decorative bottom -->
+  <line x1="100" y1="340" x2="500" y2="340" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+</svg>

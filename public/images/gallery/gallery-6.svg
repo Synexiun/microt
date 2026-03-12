@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g6-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <radialGradient id="g6-glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g6-fade-brow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g6-glow)"/>
+  <!-- Abstract artistic brow with golden ratio curves -->
+  <!-- Large decorative spiral -->
+  <g fill="none" stroke="#C9A96E" opacity="0.15">
+    <path d="M200,200 A80,80 0 0,1 120,120" stroke-width="0.8"/>
+    <path d="M120,120 A50,50 0 0,1 170,170" stroke-width="0.8"/>
+    <path d="M170,170 A30,30 0 0,1 140,140" stroke-width="0.8"/>
+  </g>
+  <!-- Flowing brow with gradient transformation -->
+  <path d="M60,190 C100,155 160,138 230,135 C280,134 320,142 360,160" fill="none" stroke="url(#g6-fade-brow)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60,200 C80,204 130,205 200,200 C260,195 320,192 360,198" fill="none" stroke="url(#g6-fade-brow)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <!-- Hair strokes with increasing opacity -->
+  <g stroke="url(#g6-fade-brow)" fill="none" stroke-linecap="round">
+    <path d="M100,198 C108,185 120,175 135,168" stroke-width="0.6" opacity="0.3"/>
+    <path d="M130,200 C138,185 152,172 170,162" stroke-width="0.7" opacity="0.4"/>
+    <path d="M160,200 C168,184 184,168 205,158" stroke-width="0.8" opacity="0.55"/>
+    <path d="M190,198 C198,182 215,166 238,155" stroke-width="0.9" opacity="0.65"/>
+    <path d="M220,196 C228,180 246,164 268,154" stroke-width="1" opacity="0.75"/>
+    <path d="M250,194 C256,180 270,166 290,158" stroke-width="1" opacity="0.8"/>
+    <path d="M278,194 C282,182 292,170 308,164" stroke-width="1" opacity="0.85"/>
+    <path d="M305,196 C308,184 316,174 328,168" stroke-width="0.9" opacity="0.8"/>
+    <path d="M330,198 C332,188 338,180 346,176" stroke-width="0.8" opacity="0.7"/>
+  </g>
+  <!-- Scattered gold particles -->
+  <g fill="#D4AF37" opacity="0.4">
+    <circle cx="80" cy="180" r="1"/>
+    <circle cx="120" cy="160" r="1.5"/>
+    <circle cx="180" cy="145" r="1.2"/>
+    <circle cx="240" cy="140" r="1.8"/>
+    <circle cx="300" cy="148" r="1.5"/>
+    <circle cx="350" cy="162" r="1.2"/>
+  </g>
+  <!-- Art deco corner accents -->
+  <g stroke="#D4AF37" fill="none" opacity="0.25">
+    <path d="M20,20 L60,20 L60,22" stroke-width="1"/>
+    <path d="M20,20 L20,60 L22,60" stroke-width="1"/>
+    <path d="M380,20 L340,20 L340,22" stroke-width="1"/>
+    <path d="M380,20 L380,60 L378,60" stroke-width="1"/>
+    <path d="M20,380 L60,380 L60,378" stroke-width="1"/>
+    <path d="M20,380 L20,340 L22,340" stroke-width="1"/>
+    <path d="M380,380 L340,380 L340,378" stroke-width="1"/>
+    <path d="M380,380 L380,340 L378,340" stroke-width="1"/>
+  </g>
+  <!-- Decorative line -->
+  <line x1="80" y1="300" x2="320" y2="300" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="200" cy="300" r="2" fill="#D4AF37" opacity="0.3"/>
+</svg>

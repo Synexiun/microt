@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g5-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <linearGradient id="g5-pink-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.3"/>
+    </linearGradient>
+    <radialGradient id="g5-glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#E8A0BF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g5-soft">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g5-glow)"/>
+  <!-- Before/after lip transformation -->
+  <!-- Left side - faded lip outline -->
+  <g opacity="0.3">
+    <path d="M40,195 C55,188 70,183 85,185 C92,186 96,183 100,180 C104,183 108,186 115,185 C130,183 145,188 160,195" fill="none" stroke="#C9A96E" stroke-width="1" stroke-linecap="round"/>
+    <path d="M40,195 C55,198 75,215 100,220 C125,215 145,198 160,195" fill="none" stroke="#C9A96E" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <!-- Center divider -->
+  <line x1="200" y1="120" x2="200" y2="280" stroke="#D4AF37" stroke-width="1" opacity="0.3"/>
+  <path d="M200,185 L205,200 L200,215 L195,200 Z" fill="#D4AF37" opacity="0.5"/>
+  <!-- Right side - bold beautiful lip -->
+  <g>
+    <ellipse cx="300" cy="198" rx="65" ry="35" fill="#E8A0BF" opacity="0.05" filter="url(#g5-soft)"/>
+    <path d="M240,195 C258,182 278,174 292,176 C298,178 304,172 308,168 C312,172 318,178 324,176 C338,174 358,182 376,195" fill="none" stroke="url(#g5-gold)" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M240,195 C258,200 278,228 308,235 C338,228 358,200 376,195" fill="none" stroke="url(#g5-gold)" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M248,195 C265,186 282,180 296,180 C302,181 306,176 308,172 C310,176 314,181 320,180 C334,180 351,186 368,195 C355,200 335,222 308,228 C281,222 261,200 248,195Z" fill="#E8A0BF" opacity="0.12"/>
+    <path d="M260,195 C275,190 290,186 302,186 C306,187 308,183 308,180 C308,183 310,187 314,186 C326,186 341,190 356,195 C345,200 328,216 308,222 C288,216 271,200 260,195Z" fill="#D4AF37" opacity="0.06"/>
+    <!-- Sparkles -->
+    <g fill="#D4AF37" opacity="0.5">
+      <circle cx="275" cy="183" r="1.2"/>
+      <circle cx="308" cy="170" r="1.5"/>
+      <circle cx="340" cy="183" r="1.2"/>
+      <circle cx="308" cy="228" r="1.2"/>
+    </g>
+  </g>
+  <!-- Decorative elements -->
+  <path d="M50,320 Q200,308 350,320" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <path d="M50,80 Q200,92 350,80" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <rect x="8" y="8" width="384" height="384" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <g fill="#D4AF37" opacity="0.3">
+    <circle cx="16" cy="16" r="1.5"/>
+    <circle cx="384" cy="16" r="1.5"/>
+    <circle cx="16" cy="384" r="1.5"/>
+    <circle cx="384" cy="384" r="1.5"/>
+  </g>
+</svg>

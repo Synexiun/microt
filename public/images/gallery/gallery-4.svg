@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g4-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="g4-champagne" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E6CC" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="g4-glow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g4-glow)"/>
+  <!-- Pair of symmetrical brows - full face composition -->
+  <!-- Left brow -->
+  <g stroke="url(#g4-gold)" fill="none" stroke-linecap="round">
+    <path d="M50,165 C75,140 110,128 155,126 C185,125 205,132 220,145 C225,152 222,158 216,162 C200,168 170,170 140,168 C110,166 80,172 58,170 C52,168 48,167 50,165Z" stroke-width="1.2" opacity="0.5"/>
+    <path d="M62,164 C68,154 80,146 95,140" stroke-width="0.8" opacity="0.6"/>
+    <path d="M80,166 C86,154 100,142 118,134" stroke-width="0.9" opacity="0.7"/>
+    <path d="M100,168 C106,154 122,140 142,132" stroke-width="0.9" opacity="0.75"/>
+    <path d="M122,168 C128,154 144,138 164,130" stroke-width="1" opacity="0.8"/>
+    <path d="M144,166 C148,154 160,140 178,134" stroke-width="0.9" opacity="0.7"/>
+    <path d="M165,164 C168,154 176,144 190,140" stroke-width="0.8" opacity="0.6"/>
+    <path d="M185,164 C186,156 192,148 200,145" stroke-width="0.7" opacity="0.5"/>
+  </g>
+  <!-- Right brow (mirrored) -->
+  <g stroke="url(#g4-gold)" fill="none" stroke-linecap="round">
+    <path d="M350,165 C325,140 290,128 245,126 C215,125 195,132 180,145 C175,152 178,158 184,162 C200,168 230,170 260,168 C290,166 320,172 342,170 C348,168 352,167 350,165Z" stroke-width="1.2" opacity="0.5"/>
+    <path d="M338,164 C332,154 320,146 305,140" stroke-width="0.8" opacity="0.6"/>
+    <path d="M320,166 C314,154 300,142 282,134" stroke-width="0.9" opacity="0.7"/>
+    <path d="M300,168 C294,154 278,140 258,132" stroke-width="0.9" opacity="0.75"/>
+    <path d="M278,168 C272,154 256,138 236,130" stroke-width="1" opacity="0.8"/>
+    <path d="M256,166 C252,154 240,140 222,134" stroke-width="0.9" opacity="0.7"/>
+    <path d="M235,164 C232,154 224,144 210,140" stroke-width="0.8" opacity="0.6"/>
+    <path d="M215,164 C214,156 208,148 200,145" stroke-width="0.7" opacity="0.5"/>
+  </g>
+  <!-- Nose bridge hint -->
+  <path d="M195,180 C198,210 198,240 195,265" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <path d="M205,180 C202,210 202,240 205,265" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+  <!-- Golden arch decoration top -->
+  <path d="M100,50 Q200,30 300,50" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2"/>
+  <path d="M120,55 Q200,38 280,55" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.15"/>
+  <!-- Decorative dots -->
+  <g fill="#D4AF37" opacity="0.3">
+    <circle cx="200" cy="35" r="2"/>
+    <circle cx="160" cy="42" r="1"/>
+    <circle cx="240" cy="42" r="1"/>
+  </g>
+  <!-- Bottom flourish -->
+  <path d="M100,350 Q200,340 300,350" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="200" cy="342" r="1.5" fill="#D4AF37" opacity="0.3"/>
+  <!-- Frame -->
+  <rect x="8" y="8" width="384" height="384" rx="3" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.15"/>
+</svg>

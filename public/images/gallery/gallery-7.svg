@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g7-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <radialGradient id="g7-glow" cx="50%" cy="40%" r="35%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g7-soft">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect width="400" height="400" fill="url(#g7-glow)"/>
+  <!-- Combo brow art - powder shading with hair strokes -->
+  <!-- Soft powder base -->
+  <path d="M70,180 C100,152 150,138 210,136 C260,135 300,142 340,160 C355,168 358,178 354,184 C345,192 320,196 280,194 C230,192 170,194 120,198 C90,200 72,195 70,188Z" fill="#D4AF37" opacity="0.08"/>
+  <path d="M80,180 C108,155 155,142 215,140 C258,139 295,145 330,162 C345,170 348,178 344,183 C336,190 315,193 278,192 C235,190 180,192 130,196 C100,198 82,193 80,186Z" fill="#C9A96E" opacity="0.06"/>
+  <!-- Outline -->
+  <path d="M70,180 C100,152 150,138 210,136 C260,135 300,142 340,160 C355,168 358,178 354,184 C345,192 320,196 280,194 C230,192 170,194 120,198 C90,200 72,195 70,188Z" fill="none" stroke="url(#g7-gold)" stroke-width="1" opacity="0.4"/>
+  <!-- Hair strokes in front section -->
+  <g stroke="#D4AF37" fill="none" stroke-linecap="round">
+    <path d="M85,186 C92,172 104,162 118,155" stroke-width="0.8" opacity="0.6"/>
+    <path d="M105,190 C112,174 126,160 142,150" stroke-width="0.9" opacity="0.7"/>
+    <path d="M125,192 C132,174 148,158 168,148" stroke-width="0.9" opacity="0.75"/>
+    <path d="M148,192 C154,176 168,160 190,148" stroke-width="1" opacity="0.8"/>
+    <path d="M170,192 C176,176 190,160 210,150" stroke-width="1" opacity="0.8"/>
+    <path d="M192,190 C196,176 208,162 226,154" stroke-width="0.9" opacity="0.7"/>
+  </g>
+  <!-- Powder gradient in tail -->
+  <ellipse cx="290" cy="178" rx="50" ry="18" fill="#D4AF37" opacity="0.05" filter="url(#g7-soft)"/>
+  <!-- Gold dots -->
+  <g fill="#D4AF37" opacity="0.4">
+    <circle cx="110" cy="155" r="1.2"/>
+    <circle cx="160" cy="142" r="1.5"/>
+    <circle cx="210" cy="138" r="1.8"/>
+    <circle cx="270" cy="145" r="1.5"/>
+    <circle cx="330" cy="165" r="1.2"/>
+  </g>
+  <!-- Decorative elements -->
+  <path d="M50,60 L50,50 L60,50" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.25"/>
+  <path d="M350,50 L350,60" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.25"/>
+  <path d="M340,50 L350,50" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.25"/>
+  <path d="M50,340 L50,350 L60,350" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.25"/>
+  <path d="M350,340 L350,350 L340,350" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.25"/>
+  <!-- Bottom accent -->
+  <path d="M100,320 C150,315 200,318 250,315 C300,312 350,315 360,320" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+</svg>
