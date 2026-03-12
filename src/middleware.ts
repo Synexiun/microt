@@ -1,32 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createHmac } from "crypto";
 
 const SESSION_COOKIE_NAME = "admin_session";
 const SESSION_EXPIRY = 8 * 60 * 60 * 1000; // 8 hours in ms
 
-function isValidToken(token: string): boolean {
+async function isValidToken(token: string): Promise<boolean> {
   try {
     const [timestampStr, hmac] = token.split(":");
     const timestamp = Number(timestampStr);
     if (isNaN(timestamp) || !hmac) return false;
     if (Date.now() - timestamp > SESSION_EXPIRY) return false;
+
+    // Use Web Crypto API (Edge Runtime compatible)
     const secret = process.env.ADMIN_PASSWORD || "admin123";
-    const expected = createHmac("sha256", secret)
-      .update(String(timestamp))
-      .digest("hex");
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw",
+      encoder.encode(secret),
+      { name: "HMAC", hash: "SHA-256" },
+      false,
+      ["sign"]
+    );
+    const signature = await crypto.subtle.sign(
+      "HMAC",
+      key,
+      encoder.encode(String(timestamp))
+    );
+    const expected = Array.from(new Uint8Array(signature))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
     return hmac === expected;
   } catch {
     return false;
   }
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
     const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
 
-    if (!token || !isValidToken(token)) {
+    if (!token || !(await isValidToken(token))) {
       const loginUrl = new URL("/admin/login", request.url);
       return NextResponse.redirect(loginUrl);
     }
