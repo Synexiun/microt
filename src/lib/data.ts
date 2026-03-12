@@ -1,13 +1,18 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 
-// Each "file" becomes a KV key, e.g. "appointments.json" -> key "appointments"
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
+
+// Each "file" becomes a Redis key, e.g. "appointments.json" -> key "appointments"
 function toKey(filename: string): string {
   return filename.replace(".json", "");
 }
 
 export async function readJsonFile<T>(filename: string): Promise<T[]> {
   try {
-    const data = await kv.get<T[]>(toKey(filename));
+    const data = await redis.get<T[]>(toKey(filename));
     return data ?? [];
   } catch {
     return [];
@@ -18,7 +23,7 @@ export async function writeJsonFile<T>(
   filename: string,
   data: T[]
 ): Promise<void> {
-  await kv.set(toKey(filename), data);
+  await redis.set(toKey(filename), JSON.stringify(data));
 }
 
 export async function appendToJsonFile<T>(
