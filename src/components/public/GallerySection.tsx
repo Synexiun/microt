@@ -27,12 +27,14 @@ interface GalleryItem {
 }
 
 const stockImages = [
-  'https://images.unsplash.com/photo-1588513511116-43beaf66caaa?auto=format&fit=crop&q=80&w=600&h=600',
+  '/images/custom/hero.png',
+  '/images/custom/microblading.png',
+  '/images/custom/combo-brows.png',
+  '/images/custom/phibrows.png',
+  '/images/custom/lip-blush.png',
+  '/images/custom/permanent-eyeliner.png',
   'https://images.unsplash.com/photo-1542452255191-c85a98f2c5d1?auto=format&fit=crop&q=80&w=600&h=600',
-  'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fce?auto=format&fit=crop&q=80&w=600&h=600',
-  'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600&h=600',
-  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=600&h=600',
-  'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=600&h=600'
+  'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fce?auto=format&fit=crop&q=80&w=600&h=600'
 ];
 
 const galleryItems: GalleryItem[] = sampleGalleryImages.map((img, index) => ({

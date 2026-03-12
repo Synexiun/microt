@@ -141,7 +141,7 @@ export default function HeroSection() {
         <div className="absolute inset-[-5%]">
           {/* Using a high-quality beauty portrait from Unsplash as the hero image */}
           <Image
-            src="https://images.unsplash.com/photo-1512496015851-a1c848daae54?auto=format&fit=crop&q=80&w=2000"
+            src="/images/custom/hero.png"
             alt="Luxury Beauty Studio"
             fill
             className="object-cover object-top opacity-60"

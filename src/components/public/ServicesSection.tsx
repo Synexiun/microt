@@ -95,10 +95,10 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
           {services.map((service, index) => (
             <TiltCard key={service.slug} index={index}>
-              {/* Service image - using high-quality unsplash beauty placeholders */}
+              {/* Service image - using high-quality local custom AI generated images */}
               <div className="w-full aspect-[16/10] rounded-lg overflow-hidden mb-6 bg-dark border border-dark-lighter relative">
                 <Image
-                  src={`https://images.unsplash.com/photo-1588513511116-43beaf66caaa?auto=format&fit=crop&q=80&w=600&h=400`}
+                  src={`/images/custom/${service.slug}.png`}
                   alt={service.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
