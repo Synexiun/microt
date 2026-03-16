@@ -57,6 +57,8 @@ export default function Navbar() {
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/' + href;
       }
     },
     []

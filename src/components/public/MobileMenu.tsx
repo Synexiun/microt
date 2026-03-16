@@ -23,13 +23,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   const handleLinkClick = (href: string) => {
     onClose();
-    setTimeout(() => {
-      const id = href.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
+    const id = href.replace('#', '');
+    const el = document.getElementById(id);
+    if (el) {
+      setTimeout(() => {
         el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 300);
+      }, 300);
+    } else {
+      window.location.href = '/' + href;
+    }
   };
 
   return (
