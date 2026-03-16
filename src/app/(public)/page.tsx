@@ -4,6 +4,7 @@ import ServicesSection from '@/components/public/ServicesSection';
 import GallerySection from '@/components/public/GallerySection';
 import TestimonialsSection from '@/components/public/TestimonialsSection';
 import BookingCTASection from '@/components/public/BookingCTASection';
+import ConsentQRSection from '@/components/public/ConsentQRSection';
 import ContactSection from '@/components/public/ContactSection';
 import InstagramSection from '@/components/public/InstagramSection';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <GallerySection />
       <TestimonialsSection />
       <BookingCTASection />
+      <ConsentQRSection />
       <ContactSection />
       <InstagramSection />
     </>
