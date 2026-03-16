@@ -1,4 +1,4 @@
-import { put, list, get } from "@vercel/blob";
+import { put, list } from "@vercel/blob";
 
 // Store JSON data as Blob files at predictable paths
 // Uses private access to match the store configuration
@@ -7,7 +7,11 @@ export async function readJsonFile<T>(filename: string): Promise<T[]> {
   try {
     const { blobs } = await list({ prefix: `data/${filename}` });
     if (blobs.length === 0) return [];
-    const response = await get(blobs[0].url, { access: "private" });
+    // Private blobs require the token as a Bearer header
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
+    const response = await fetch(blobs[0].url, {
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+    });
     if (!response.ok) return [];
     return (await response.json()) as T[];
   } catch {
