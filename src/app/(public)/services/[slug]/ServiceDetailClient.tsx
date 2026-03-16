@@ -195,9 +195,16 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
               <p className="text-gray-400 text-lg mb-2">
                 Session duration: <span className="text-white">{service.duration}</span>
               </p>
-              <p className="text-gray-500 text-sm">
-                Includes initial appointment and complimentary touch-up session
-              </p>
+              {service.touchUpPrice && (
+                <p className="text-gray-400 text-sm mt-2">
+                  Touch Up{" "}
+                  <span className="text-gray-500">(after 6–7 weeks)</span>
+                  {" — "}
+                  <span className="text-gold font-semibold">
+                    {service.touchUpPrice}
+                  </span>
+                </p>
+              )}
             </div>
           </AnimatedSection>
 

@@ -91,8 +91,8 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
               Costa Mesa&apos;s premier luxury permanent makeup studio. We combine
               artistry with precision to enhance your natural beauty, one stroke
-              at a time. Specializing in microblading, PhiBrows, combo brows,
-              lip blush, and permanent eyeliner.
+              at a time. Specializing in microblading, ombre/powder brows, combo
+              brows, lip blush, and eye liner.
             </p>
             <p className="text-gray-500 text-xs leading-relaxed">
               Serving Costa Mesa, Newport Beach, Irvine, and surrounding Orange
@@ -117,6 +117,24 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-gray-400 text-sm hover:text-gold transition-colors duration-300 relative group inline-block"
+                >
+                  FAQ
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/consent"
+                  className="text-gray-400 text-sm hover:text-gold transition-colors duration-300 relative group inline-block"
+                >
+                  Consent Form
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full" />
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/book"

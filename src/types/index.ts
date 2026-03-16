@@ -5,10 +5,69 @@ export interface Service {
   description: string;
   duration: string;
   priceRange: string;
+  touchUpPrice?: string;
   image: string;
   processSteps: { title: string; description: string }[];
   healingTimeline: { day: string; description: string }[];
   faqs: { question: string; answer: string }[];
+}
+
+export interface ConsentFormSubmission {
+  id: string;
+  submittedAt: string;
+  // Section 1 — Client Info
+  salonName: string;
+  clientName: string;
+  phone: string;
+  email: string;
+  treatmentType: string;
+  appointmentDate: string;
+  // Section 2 — Health
+  hemophilia: boolean;
+  diabetesMellitus: boolean;
+  hepatitis: boolean;
+  hivPositive: boolean;
+  skinDiseases: boolean;
+  eczema: boolean;
+  allergies: boolean;
+  autoimmuneDisease: boolean;
+  herpesProne: boolean;
+  infectiousDiseases: boolean;
+  epilepsy: boolean;
+  cardiovascularProblems: boolean;
+  bloodThinners: boolean;
+  pregnant: boolean;
+  regularMedications: boolean;
+  hasPacemaker: boolean;
+  woundHealingProblems: boolean;
+  keloidScars: boolean;
+  drugsAlcohol24h: boolean;
+  recentSurgery14d: boolean;
+  irradiationIntervention: boolean;
+  usesRetinol: boolean;
+  facialTreatment15d: boolean;
+  microneedling1m: boolean;
+  botox2m: boolean;
+  vaccinationTimeframe: string;
+  // Section 3 — Consents
+  consentSwellingRedness: boolean;
+  consentScabsColorChanges: boolean;
+  consentDarkerThicker: boolean;
+  consentSkinTypeRetention: boolean;
+  consentSymmetry: boolean;
+  consentHealingVariation: boolean;
+  consentCorrectionTiming: boolean;
+  consentRefreshNeeded: boolean;
+  consentAftercare: boolean;
+  consentAllergicReactions: boolean;
+  consentFalseInfo: boolean;
+  consentPhotoMarketing: boolean;
+  // Section 4 — Signature
+  signatureFullName: string;
+  signatureData: string;
+  signatureDate: string;
+  // Metadata
+  userAgent?: string;
 }
 
 export interface Appointment {

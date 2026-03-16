@@ -9,11 +9,11 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from './AnimatedSection';
 
 const startingPrices: Record<string, string> = {
-  microblading: '$400',
-  phibrows: '$500',
-  'combo-brows': '$450',
-  'lip-blush': '$400',
-  'permanent-eyeliner': '$300',
+  microblading: '$388',
+  'ombre-powder-brows': '$388',
+  'combo-brows': '$400',
+  'lip-blush': '$388',
+  'eye-liner': '$388',
 };
 
 function TiltCard({ children, index }: { children: React.ReactNode; index: number }) {
@@ -98,7 +98,7 @@ export default function ServicesSection() {
               {/* Service image - using high-quality local custom AI generated images */}
               <div className="w-full aspect-[16/10] rounded-lg overflow-hidden mb-6 bg-dark border border-dark-lighter relative">
                 <Image
-                  src={`/images/custom/${service.slug}.png`}
+                  src={service.image}
                   alt={service.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"

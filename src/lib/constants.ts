@@ -2,7 +2,7 @@ export const BRAND = {
   name: "Velvet Brow Studio",
   tagline: "Where Precision Meets Beauty",
   description:
-    "Velvet Brow Studio is a luxury permanent makeup studio in Costa Mesa, CA, specializing in microblading, PhiBrows, combo brows, lip blush, and permanent eyeliner. Our expert artists combine artistry with precision to enhance your natural beauty.",
+    "Velvet Brow Studio is a luxury permanent makeup studio in Costa Mesa, CA, specializing in microblading, ombre/powder brows, combo brows, lip blush, and eye liner. Our expert artists combine artistry with precision to enhance your natural beauty.",
   location: "Costa Mesa, CA",
   address: "1847 Newport Blvd, Suite 200, Costa Mesa, CA 92627",
   phone: "(949) 555-0173",
