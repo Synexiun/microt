@@ -26,6 +26,7 @@ export async function writeJsonFile<T>(
   await put(`data/${filename}`, JSON.stringify(data), {
     access: "private",
     addRandomSuffix: false,
+    allowOverwrite: true,
   });
 }
 
@@ -85,5 +86,6 @@ export async function writeJsonObject<T>(
   await put(`data/${filename}`, JSON.stringify(data), {
     access: "private",
     addRandomSuffix: false,
+    allowOverwrite: true,
   });
 }

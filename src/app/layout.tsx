@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Raleway } from "next/font/google";
-import { BRAND, BUSINESS_HOURS } from "@/lib/constants";
+import JsonLdScript from "@/components/JsonLdScript";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -63,43 +63,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://velvetbrowstudio.com";
-
-  const openingHoursSpec = Object.entries(BUSINESS_HOURS)
-    .filter(([, hours]) => hours !== null)
-    .map(([day, hours]) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: day,
-      opens: hours!.open,
-      closes: hours!.close,
-    }));
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    name: BRAND.name,
-    description: BRAND.description,
-    url: siteUrl,
-    telephone: BRAND.phone,
-    email: BRAND.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Costa Mesa",
-      addressRegion: "CA",
-      addressCountry: "US",
-    },
-    openingHoursSpecification: openingHoursSpec,
-    image: `${siteUrl}/images/custom/hero.png`,
-    priceRange: "$$",
-  };
-
   return (
     <html lang="en" className={`${cormorant.variable} ${raleway.variable}`}>
       <body className="font-body bg-dark text-white antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLdScript />
         {children}
         
         {/* Persistent Global Booking CTA */}
