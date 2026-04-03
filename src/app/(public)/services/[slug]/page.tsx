@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getServiceBySlug, getAllServiceSlugs } from "@/lib/services";
+import { getServiceBySlugAsync, getAllServiceSlugsAsync } from "@/lib/services";
 import ServiceDetailClient from "./ServiceDetailClient";
 
 interface ServicePageProps {
@@ -8,12 +8,12 @@ interface ServicePageProps {
 }
 
 export async function generateStaticParams() {
-  return getAllServiceSlugs().map((slug) => ({ slug }));
+  return (await getAllServiceSlugsAsync()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlugAsync(slug);
 
   if (!service) {
     return {
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlugAsync(slug);
 
   if (!service) {
     notFound();

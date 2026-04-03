@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BRAND, BUSINESS_HOURS } from '@/lib/constants';
+import type { SiteContent } from '@/lib/constants';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from './AnimatedSection';
 
@@ -29,7 +29,12 @@ function AnimatedIcon({ children, delay = 0 }: { children: React.ReactNode; dela
   );
 }
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  brand: Pick<SiteContent['brand'], 'phone' | 'email'>;
+  businessHours: SiteContent['businessHours'];
+}
+
+export default function ContactSection({ brand, businessHours }: ContactSectionProps) {
   return (
     <section id="contact" className="py-24 md:py-32 bg-dark-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,10 +77,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Phone</h4>
                   <a
-                    href={`tel:${BRAND.phone}`}
+                    href={`tel:${brand.phone}`}
                     className="text-gray-400 hover:text-gold transition-colors"
                   >
-                    {BRAND.phone}
+                    {brand.phone}
                   </a>
                 </div>
               </div>
@@ -100,10 +105,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
                   <a
-                    href={`mailto:${BRAND.email}`}
+                    href={`mailto:${brand.email}`}
                     className="text-gray-400 hover:text-gold transition-colors"
                   >
-                    {BRAND.email}
+                    {brand.email}
                   </a>
                 </div>
               </div>
@@ -187,7 +192,7 @@ export default function ContactSection() {
                   </h4>
                   <table className="w-full">
                     <tbody>
-                      {Object.entries(BUSINESS_HOURS).map(([day, hours], index) => (
+                      {Object.entries(businessHours).map(([day, hours], index) => (
                         <motion.tr
                           key={day}
                           className="border-b border-dark-lighter/50 last:border-0"

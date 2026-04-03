@@ -7,8 +7,11 @@ import BookingCTASection from '@/components/public/BookingCTASection';
 import ConsentQRSection from '@/components/public/ConsentQRSection';
 import ContactSection from '@/components/public/ContactSection';
 import InstagramSection from '@/components/public/InstagramSection';
+import { getSiteContent } from '@/lib/constants';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { brand, businessHours } = await getSiteContent();
+
   return (
     <>
       <HeroSection />
@@ -18,7 +21,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <BookingCTASection />
       <ConsentQRSection />
-      <ContactSection />
+      <ContactSection brand={brand} businessHours={businessHours} />
       <InstagramSection />
     </>
   );
