@@ -34,6 +34,59 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
+import { readJsonObject, writeJsonObject } from "@/lib/data";
+
+export interface SiteContent {
+  brand: {
+    name: string;
+    tagline: string;
+    description: string;
+    location: string;
+    address: string;
+    phone: string;
+    email: string;
+    instagramHandle: string;
+  };
+  businessHours: Record<string, { open: string; close: string } | null>;
+  socialLinks: { instagram: string; tiktok: string; facebook: string };
+}
+
+const DEFAULT_SITE_CONTENT: SiteContent = {
+  brand: {
+    name: BRAND.name,
+    tagline: BRAND.tagline,
+    description: BRAND.description,
+    location: BRAND.location,
+    address: BRAND.address,
+    phone: BRAND.phone,
+    email: BRAND.email,
+    instagramHandle: BRAND.instagram,
+  },
+  businessHours: BUSINESS_HOURS,
+  socialLinks: { ...SOCIAL_LINKS },
+};
+
+export async function getSiteContent(): Promise<SiteContent> {
+  const stored = await readJsonObject<SiteContent>("site-content.json");
+  if (stored) return stored;
+  await writeJsonObject("site-content.json", DEFAULT_SITE_CONTENT);
+  return DEFAULT_SITE_CONTENT;
+}
+
+export async function getBrand(): Promise<SiteContent["brand"]> {
+  return (await getSiteContent()).brand;
+}
+
+export async function getBusinessHours(): Promise<
+  SiteContent["businessHours"]
+> {
+  return (await getSiteContent()).businessHours;
+}
+
+export async function getSocialLinks(): Promise<SiteContent["socialLinks"]> {
+  return (await getSiteContent()).socialLinks;
+}
+
 export const BOOKING_TIMES = [
   "9:00 AM",
   "10:00 AM",
