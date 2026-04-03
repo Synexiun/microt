@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -11,6 +11,7 @@ export default function AdminServicesPage() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
+  const [savingOrder, setSavingOrder] = useState(false);
 
   async function fetchServices() {
     try {
@@ -24,6 +25,28 @@ export default function AdminServicesPage() {
   useEffect(() => {
     fetchServices();
   }, []);
+
+  const saveOrder = useCallback(async (ordered: Service[]) => {
+    setSavingOrder(true);
+    try {
+      await fetch("/api/admin/services", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ordered),
+      });
+    } finally {
+      setSavingOrder(false);
+    }
+  }, []);
+
+  function move(index: number, direction: -1 | 1) {
+    const next = [...services];
+    const target = index + direction;
+    if (target < 0 || target >= next.length) return;
+    [next[index], next[target]] = [next[target], next[index]];
+    setServices(next);
+    saveOrder(next);
+  }
 
   async function handleDelete(slug: string) {
     if (!confirm(`Delete "${slug}"? This cannot be undone.`)) return;
@@ -54,15 +77,44 @@ export default function AdminServicesPage() {
         <div>
           <h1 className="font-heading text-3xl text-white">Services</h1>
           <p className="text-gray-400 text-sm mt-1">
-            Edit service content, pricing, and FAQs
+            Edit content, pricing, and FAQs. Use arrows to reorder.
           </p>
         </div>
+        {savingOrder && (
+          <span className="text-xs text-gray-400 flex items-center gap-2">
+            <Spinner /> Saving order…
+          </span>
+        )}
       </div>
 
-      <div className="space-y-4">
-        {services.map((service) => (
-          <Card key={service.slug} className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4 min-w-0">
+      <div className="space-y-3">
+        {services.map((service, index) => (
+          <Card key={service.slug} className="flex items-center gap-3">
+            {/* Reorder buttons */}
+            <div className="flex flex-col gap-0.5 flex-shrink-0">
+              <button
+                onClick={() => move(index, -1)}
+                disabled={index === 0 || savingOrder}
+                className="p-1 text-gray-500 hover:text-white disabled:opacity-20 transition-colors"
+                title="Move up"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => move(index, 1)}
+                disabled={index === services.length - 1 || savingOrder}
+                className="p-1 text-gray-500 hover:text-white disabled:opacity-20 transition-colors"
+                title="Move down"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-4 min-w-0 flex-1">
               {service.image && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -88,7 +140,19 @@ export default function AdminServicesPage() {
                 </div>
               </div>
             </div>
+
             <div className="flex items-center gap-2 flex-shrink-0">
+              <a
+                href={`/services/${service.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-400 hover:text-gold transition-colors"
+                title="Preview on public site"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
               <Link href={`/admin/services/${service.slug}`}>
                 <Button variant="secondary" size="sm">
                   Edit

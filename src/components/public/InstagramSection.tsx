@@ -6,7 +6,11 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from './AnimatedSection';
 import { sampleInstagramPosts } from '@/lib/sample-data';
 
-export default function InstagramSection() {
+interface InstagramSectionProps {
+  instagramHandle?: string;
+}
+
+export default function InstagramSection({ instagramHandle = "@velvetbrowstudio" }: InstagramSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -22,7 +26,7 @@ export default function InstagramSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Follow Us on Instagram"
-          subtitle="@velvetbrowstudio"
+          subtitle={instagramHandle}
         />
 
         <AnimatedSection direction="up">

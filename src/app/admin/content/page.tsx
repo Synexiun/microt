@@ -20,6 +20,7 @@ export default function AdminContentPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   useEffect(() => {
@@ -34,13 +35,22 @@ export default function AdminContentPage() {
     load();
   }, []);
 
+  useEffect(() => {
+    if (!isDirty) return;
+    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [isDirty]);
+
   function setBrand(key: keyof SiteContent["brand"], value: string) {
+    setIsDirty(true);
     setContent((prev) =>
       prev ? { ...prev, brand: { ...prev.brand, [key]: value } } : prev
     );
   }
 
   function setSocial(key: keyof SiteContent["socialLinks"], value: string) {
+    setIsDirty(true);
     setContent((prev) =>
       prev
         ? { ...prev, socialLinks: { ...prev.socialLinks, [key]: value } }
@@ -53,6 +63,7 @@ export default function AdminContentPage() {
     field: "open" | "close" | "closed",
     value: string | boolean
   ) {
+    setIsDirty(true);
     setContent((prev) => {
       if (!prev) return prev;
       const current = prev.businessHours[day];
@@ -87,6 +98,7 @@ export default function AdminContentPage() {
         body: JSON.stringify(content),
       });
       if (res.ok) {
+        setIsDirty(false);
         setMessage({ type: "success", text: "Saved successfully." });
       } else {
         const err = await res.json();
@@ -111,7 +123,14 @@ export default function AdminContentPage() {
     <form onSubmit={handleSave}>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-heading text-3xl text-white">Site Content</h1>
+          <div className="flex items-center gap-3">
+            <h1 className="font-heading text-3xl text-white">Site Content</h1>
+            {isDirty && (
+              <span className="text-xs text-amber-400 bg-amber-400/10 px-2 py-1 rounded">
+                Unsaved
+              </span>
+            )}
+          </div>
           <p className="text-gray-400 text-sm mt-1">
             Edit studio info, contact details, and business hours
           </p>

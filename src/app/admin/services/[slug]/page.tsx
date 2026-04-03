@@ -33,6 +33,7 @@ export default function AdminServiceEditPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -52,7 +53,16 @@ export default function AdminServiceEditPage() {
     load();
   }, [slug, router]);
 
+  // Warn before navigating away with unsaved changes
+  useEffect(() => {
+    if (!isDirty) return;
+    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [isDirty]);
+
   function setField<K extends keyof EditableService>(key: K, value: EditableService[K]) {
+    setIsDirty(true);
     setForm((prev) => prev ? { ...prev, [key]: value } : prev);
   }
 
@@ -68,6 +78,7 @@ export default function AdminServiceEditPage() {
         body: JSON.stringify(form),
       });
       if (res.ok) {
+        setIsDirty(false);
         setMessage({ type: "success", text: "Saved successfully." });
       } else {
         const err = await res.json();
@@ -130,9 +141,27 @@ export default function AdminServiceEditPage() {
             </svg>
             Services
           </button>
-          <h1 className="font-heading text-3xl text-white">{form.name}</h1>
+          <div className="flex items-center gap-3">
+            <h1 className="font-heading text-3xl text-white">{form.name}</h1>
+            {isDirty && (
+              <span className="text-xs text-amber-400 bg-amber-400/10 px-2 py-1 rounded">
+                Unsaved
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-3">
+          <a
+            href={`/services/${slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gold transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+            Preview
+          </a>
           {message && (
             <span
               className={`text-sm ${message.type === "success" ? "text-green-400" : "text-red-400"}`}

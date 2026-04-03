@@ -119,7 +119,10 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
       {/* Navigation */}
       <nav className="flex-1 py-4 overflow-y-auto">
         {navItems.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive =
+            pathname === item.href ||
+            (item.href !== "/admin/dashboard" &&
+              pathname.startsWith(item.href + "/"));
           return (
             <Link
               key={item.href}

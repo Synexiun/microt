@@ -22,7 +22,7 @@ export default async function HomePage() {
       <BookingCTASection />
       <ConsentQRSection />
       <ContactSection brand={brand} businessHours={businessHours} />
-      <InstagramSection />
+      <InstagramSection instagramHandle={brand.instagramHandle} />
     </>
   );
 }
