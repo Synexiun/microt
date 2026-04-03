@@ -114,3 +114,13 @@ export interface InstagramPost {
   embedHtml?: string;
   addedAt: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  service: string;
+  quote: string;
+  rating: number;
+  location: string;
+  createdAt: string;
+}

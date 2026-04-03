@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, updateInJsonFile } from "@/lib/data";
 import { bookingSchema } from "@/lib/validators";
 import { getServiceBySlugAsync } from "@/lib/services";
+import { sendBookingNotification } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 import type { Appointment, Customer } from "@/types";
@@ -95,6 +96,9 @@ export async function POST(request: NextRequest) {
       };
       await appendToJsonFile<Customer>("customers.json", newCustomer);
     }
+
+    // Fire-and-forget — don't let email failure block the booking response
+    sendBookingNotification(appointment);
 
     return NextResponse.json(appointment, { status: 201 });
   } catch (error) {

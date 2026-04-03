@@ -12,6 +12,7 @@ interface DashboardStats {
   pendingAppointments: number;
   totalCustomers: number;
   totalSubscribers: number;
+  totalServices: number;
 }
 
 export default function DashboardPage() {
@@ -20,6 +21,7 @@ export default function DashboardPage() {
     pendingAppointments: 0,
     totalCustomers: 0,
     totalSubscribers: 0,
+    totalServices: 0,
   });
   const [upcoming, setUpcoming] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,11 +29,12 @@ export default function DashboardPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [appointmentsRes, customersRes, subscribersRes] =
+        const [appointmentsRes, customersRes, subscribersRes, servicesRes] =
           await Promise.all([
             fetch("/api/appointments"),
             fetch("/api/customers"),
             fetch("/api/subscribers"),
+            fetch("/api/admin/services"),
           ]);
 
         const appointments: Appointment[] = appointmentsRes.ok
@@ -42,6 +45,9 @@ export default function DashboardPage() {
           : [];
         const subscribers: Subscriber[] = subscribersRes.ok
           ? await subscribersRes.json()
+          : [];
+        const services: unknown[] = servicesRes.ok
+          ? await servicesRes.json()
           : [];
 
         const now = new Date();
@@ -62,6 +68,7 @@ export default function DashboardPage() {
           pendingAppointments,
           totalCustomers: customers.length,
           totalSubscribers: subscribers.length,
+          totalServices: services.length,
         });
 
         // Get upcoming appointments (future, not cancelled)
@@ -133,14 +140,25 @@ export default function DashboardPage() {
         </svg>
       ),
     },
+    {
+      label: "Active Services",
+      value: stats.totalServices,
+      href: "/admin/services",
+      icon: (
+        <svg className="w-8 h-8 text-gold/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
+        </svg>
+      ),
+    },
   ];
 
   return (
     <div className="space-y-8">
       {/* Stats row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
         {statCards.map((card) => (
-          <Card key={card.label} padding="md">
+          <Card key={card.label} padding="md" glow={"href" in card} onClick={"href" in card ? () => (window.location.href = (card as {href:string}).href) : undefined}>
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-3xl font-bold text-gold">{card.value}</p>

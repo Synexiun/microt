@@ -8,9 +8,13 @@ import ConsentQRSection from '@/components/public/ConsentQRSection';
 import ContactSection from '@/components/public/ContactSection';
 import InstagramSection from '@/components/public/InstagramSection';
 import { getSiteContent } from '@/lib/constants';
+import { getTestimonials } from '@/lib/testimonials';
 
 export default async function HomePage() {
-  const { brand, businessHours } = await getSiteContent();
+  const [{ brand, businessHours }, testimonials] = await Promise.all([
+    getSiteContent(),
+    getTestimonials(),
+  ]);
 
   return (
     <>
@@ -18,7 +22,7 @@ export default async function HomePage() {
       <AboutSection />
       <ServicesSection />
       <GallerySection />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
       <BookingCTASection />
       <ConsentQRSection />
       <ContactSection brand={brand} businessHours={businessHours} />

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { sampleTestimonials } from '@/lib/sample-data';
+import type { Testimonial } from '@/types';
 
 function AnimatedStarRating({ rating, key: animKey }: { rating: number; key: number | string }) {
   return (
@@ -67,19 +67,23 @@ function TypewriterName({ name, key: animKey }: { name: string; key: number | st
   );
 }
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  testimonials: Testimonial[];
+}
+
+export default function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % sampleTestimonials.length);
-  }, []);
+    setCurrent((prev) => (prev + 1) % Math.max(1, testimonials.length));
+  }, [testimonials.length]);
 
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
   }, [next]);
 
-  const testimonial = sampleTestimonials[current];
+  const testimonial = testimonials[current];
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 bg-dark-light overflow-hidden">
@@ -100,7 +104,7 @@ export default function TestimonialsSection() {
         {/* Testimonial carousel with crossfade */}
         <div className="relative mt-12 min-h-[360px] md:min-h-[320px]">
           <AnimatePresence mode="wait">
-            <motion.div
+            {testimonial && <motion.div
               key={testimonial.id}
               initial={{ opacity: 0, scale: 0.97, filter: 'blur(8px)' }}
               animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
@@ -177,13 +181,13 @@ export default function TestimonialsSection() {
               >
                 {testimonial.location}
               </motion.p>
-            </motion.div>
+            </motion.div>}
           </AnimatePresence>
         </div>
 
         {/* Navigation dots with spring animation */}
         <div className="flex justify-center gap-3 mt-8">
-          {sampleTestimonials.map((_, index) => (
+          {testimonials.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => setCurrent(index)}
