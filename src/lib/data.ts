@@ -62,3 +62,28 @@ export async function deleteFromJsonFile(
   await writeJsonFile(filename, filtered);
   return true;
 }
+
+export async function readJsonObject<T>(filename: string): Promise<T | null> {
+  try {
+    const { blobs } = await list({ prefix: `data/${filename}` });
+    if (blobs.length === 0) return null;
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
+    const response = await fetch(blobs[0].url, {
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+    });
+    if (!response.ok) return null;
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+export async function writeJsonObject<T>(
+  filename: string,
+  data: T
+): Promise<void> {
+  await put(`data/${filename}`, JSON.stringify(data), {
+    access: "private",
+    addRandomSuffix: false,
+  });
+}
