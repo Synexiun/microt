@@ -11,6 +11,7 @@ export async function readJsonFile<T>(filename: string): Promise<T[]> {
     const token = process.env.BLOB_READ_WRITE_TOKEN;
     const response = await fetch(blobs[0].url, {
       headers: token ? { authorization: `Bearer ${token}` } : {},
+      cache: "no-store",
     });
     if (!response.ok) return [];
     return (await response.json()) as T[];
@@ -71,6 +72,7 @@ export async function readJsonObject<T>(filename: string): Promise<T | null> {
     const token = process.env.BLOB_READ_WRITE_TOKEN;
     const response = await fetch(blobs[0].url, {
       headers: token ? { authorization: `Bearer ${token}` } : {},
+      cache: "no-store",
     });
     if (!response.ok) return null;
     return (await response.json()) as T;

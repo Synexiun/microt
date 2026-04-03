@@ -39,7 +39,8 @@ export async function middleware(request: NextRequest) {
 
   const isAdminPage =
     pathname.startsWith("/admin") && pathname !== "/admin/login";
-  const isAdminApi = pathname.startsWith("/api/admin");
+  const isAdminApi =
+    pathname.startsWith("/api/admin") && pathname !== "/api/admin/auth";
 
   if (isAdminPage || isAdminApi) {
     const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;

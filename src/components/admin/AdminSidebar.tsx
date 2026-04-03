@@ -9,7 +9,7 @@ interface AdminSidebarProps {
   onClose: () => void;
 }
 
-const navItems = [
+const operationsItems = [
   {
     label: "Dashboard",
     href: "/admin/dashboard",
@@ -74,6 +74,9 @@ const navItems = [
       </svg>
     ),
   },
+];
+
+const cmsItems = [
   {
     label: "Testimonials",
     href: "/admin/testimonials",
@@ -127,11 +130,46 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
 
       {/* Navigation */}
       <nav className="flex-1 py-4 overflow-y-auto">
-        {navItems.map((item) => {
+        {operationsItems.map((item) => {
           const isActive =
             pathname === item.href ||
             (item.href !== "/admin/dashboard" &&
               pathname.startsWith(item.href + "/"));
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className={`
+                flex items-center gap-3 px-6 py-3 text-sm font-body
+                transition-all duration-200 relative
+                ${
+                  isActive
+                    ? "text-gold bg-gold/5"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                }
+              `}
+            >
+              {isActive && (
+                <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold" />
+              )}
+              {item.icon}
+              {item.label}
+            </Link>
+          );
+        })}
+
+        {/* CMS section */}
+        <div className="px-6 pt-5 pb-1">
+          <p className="text-xs font-medium text-gray-600 uppercase tracking-widest font-body">
+            Content
+          </p>
+        </div>
+
+        {cmsItems.map((item) => {
+          const isActive =
+            pathname === item.href ||
+            pathname.startsWith(item.href + "/");
           return (
             <Link
               key={item.href}
