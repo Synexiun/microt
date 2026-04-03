@@ -7,7 +7,11 @@ import { NAV_LINKS } from '@/lib/constants';
 import GoldButton from '@/components/ui/GoldButton';
 import MobileMenu from './MobileMenu';
 
-export default function Navbar() {
+interface NavbarProps {
+  socialLinks: { instagram: string; tiktok: string; facebook: string };
+}
+
+export default function Navbar({ socialLinks }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -141,7 +145,7 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} socialLinks={socialLinks} />
     </>
   );
 }

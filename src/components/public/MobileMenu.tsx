@@ -2,14 +2,15 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+import { NAV_LINKS } from '@/lib/constants';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  socialLinks: { instagram: string; tiktok: string; facebook: string };
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, socialLinks }: MobileMenuProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -109,7 +110,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Social links */}
             <div className="px-10 pb-10 flex gap-6">
               <a
-                href={SOCIAL_LINKS.instagram}
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gold transition-colors"
@@ -118,7 +119,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <InstagramIcon />
               </a>
               <a
-                href={SOCIAL_LINKS.tiktok}
+                href={socialLinks.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gold transition-colors"
@@ -127,7 +128,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <TikTokIcon />
               </a>
               <a
-                href={SOCIAL_LINKS.facebook}
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gold transition-colors"
