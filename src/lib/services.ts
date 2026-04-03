@@ -1,4 +1,5 @@
 import { Service } from "@/types";
+import { readJsonFile, writeJsonFile } from "@/lib/data";
 
 export const services: Service[] = [
   {
@@ -449,4 +450,21 @@ export function getServiceBySlug(slug: string): Service | undefined {
 
 export function getAllServiceSlugs(): string[] {
   return services.map((service) => service.slug);
+}
+
+export async function getServices(): Promise<Service[]> {
+  const stored = await readJsonFile<Service>("services.json");
+  if (stored.length > 0) return stored;
+  await writeJsonFile("services.json", services);
+  return services;
+}
+
+export async function getServiceBySlugAsync(
+  slug: string
+): Promise<Service | undefined> {
+  return (await getServices()).find((s) => s.slug === slug);
+}
+
+export async function getAllServiceSlugsAsync(): Promise<string[]> {
+  return (await getServices()).map((s) => s.slug);
 }

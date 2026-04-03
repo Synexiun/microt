@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, updateInJsonFile } from "@/lib/data";
 import { bookingSchema } from "@/lib/validators";
-import { getServiceBySlug } from "@/lib/services";
+import { getServiceBySlugAsync } from "@/lib/services";
 
 export const dynamic = "force-dynamic";
 import type { Appointment, Customer } from "@/types";
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = result.data;
-    const service = getServiceBySlug(data.serviceSlug);
+    const service = await getServiceBySlugAsync(data.serviceSlug);
 
     if (!service) {
       return NextResponse.json(
