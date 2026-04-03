@@ -37,12 +37,18 @@ async function isValidToken(token: string): Promise<boolean> {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+  const isAdminPage =
+    pathname.startsWith("/admin") && pathname !== "/admin/login";
+  const isAdminApi = pathname.startsWith("/api/admin");
+
+  if (isAdminPage || isAdminApi) {
     const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!token || !(await isValidToken(token))) {
-      const loginUrl = new URL("/admin/login", request.url);
-      return NextResponse.redirect(loginUrl);
+      if (isAdminApi) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+      return NextResponse.redirect(new URL("/admin/login", request.url));
     }
   }
 
@@ -50,5 +56,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*"],
 };
