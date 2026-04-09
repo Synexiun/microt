@@ -1,14 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getServiceBySlugAsync, getAllServiceSlugsAsync } from "@/lib/services";
+import { getServiceBySlugAsync } from "@/lib/services";
 import ServiceDetailClient from "./ServiceDetailClient";
+
+export const dynamic = "force-dynamic";
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  return (await getAllServiceSlugsAsync()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {

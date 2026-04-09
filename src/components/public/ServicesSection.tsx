@@ -4,17 +4,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { services } from '@/lib/services';
+import type { Service } from '@/types';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from './AnimatedSection';
-
-const startingPrices: Record<string, string> = {
-  microblading: '$388',
-  'ombre-powder-brows': '$388',
-  'combo-brows': '$400',
-  'lip-blush': '$388',
-  'eye-liner': '$388',
-};
 
 function TiltCard({ children, index }: { children: React.ReactNode; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -83,7 +75,7 @@ function TiltCard({ children, index }: { children: React.ReactNode; index: numbe
   );
 }
 
-export default function ServicesSection() {
+export default function ServicesSection({ services }: { services: Service[] }) {
   return (
     <section id="services" className="py-24 md:py-32 bg-dark-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,7 +117,7 @@ export default function ServicesSection() {
                     animate={{ y: [0, -2, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    {startingPrices[service.slug] || service.priceRange}
+                    {service.priceRange}
                   </motion.span>
                 </div>
                 <span className="text-gray-500 flex items-center gap-1.5">
