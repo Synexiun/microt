@@ -1,5 +1,10 @@
 import { Service } from "@/types";
-import { readJsonFileOrNull, writeJsonFile } from "@/lib/data";
+import { readJsonFileOrNull, writeJsonFile, readJsonObject, writeJsonObject } from "@/lib/data";
+
+// Bump this number whenever the seed data changes in a way that should overwrite
+// existing blob data (e.g. a price update). The migration runs once and then
+// the version is stored so it never runs again (admin changes after that are respected).
+const SEED_VERSION = 2;
 
 export const services: Service[] = [
   {
@@ -10,8 +15,8 @@ export const services: Service[] = [
     description:
       "Microblading is a semi-permanent cosmetic tattooing technique that creates the appearance of natural, fuller eyebrows. Using a specialized hand-held tool with ultra-fine needles, our artists deposit pigment into the upper layers of the skin, drawing individual hair-like strokes that blend seamlessly with your existing brow hair.\n\nAt Velvet Brow Studio, our microblading artists are trained in the latest techniques and use only premium pigments that are formulated to heal true to color. Each session begins with a detailed consultation where we analyze your facial structure, skin tone, and personal preferences to design brows that perfectly complement your features.\n\nThe result is a set of stunningly natural brows that frame your face beautifully, eliminating the need for daily brow makeup. Whether you have sparse brows, gaps, or simply want a more defined shape, microblading delivers effortless beauty that lasts 12 to 18 months.",
     duration: "2–2.5 hours",
-    priceRange: "$388",
-    touchUpPrice: "$100",
+    priceRange: "$550",
+    touchUpPrice: "$150",
     image: "/images/custom/microblading.png",
     processSteps: [
       {
@@ -98,8 +103,8 @@ export const services: Service[] = [
     description:
       "Ombre and Powder Brows is a semi-permanent technique that uses a digital machine to deposit tiny dots of pigment in a soft, gradient pattern across the brow. The result is a beautifully powdery, filled-in brow that mimics the look of professionally applied brow powder or pomade — without the daily effort.\n\nUnlike microblading, which uses manual strokes, the ombre powder technique works with the machine to create an even, dimensional finish that is especially flattering on oily, combination, or mature skin types. The gradient naturally fades from lighter at the front to more defined at the tail, giving a modern, polished look.\n\nAt Velvet Brow Studio, every ombre brow session begins with careful shape mapping and color consultation to design a brow that suits your facial structure and skin tone. Whether you want a subtle everyday look or a bolder defined arch, we customize the intensity to match your preference.",
     duration: "2–2.5 hours",
-    priceRange: "$388",
-    touchUpPrice: "$100",
+    priceRange: "$550",
+    touchUpPrice: "$150",
     image: "/images/custom/phibrows.png",
     processSteps: [
       {
@@ -186,8 +191,8 @@ export const services: Service[] = [
     description:
       "Combo brows merge two techniques: microblading and powder ombre shading. The result is a beautifully dimensional brow that features realistic hair strokes at the front and a soft, powdery gradient through the body and tail of the brow.\n\nThis technique is ideal for clients who want the natural hair-stroke look of microblading with the added fullness and definition that powder shading provides. Combo brows work exceptionally well on all skin types, including oily skin where traditional microblading alone may not retain as crisply.\n\nAt Velvet Brow Studio, our combo brow artists excel at blending these two techniques seamlessly, creating a gradient effect that looks like perfectly applied brow makeup — except it stays on 24/7. Wake up every morning with flawless brows that require zero effort.",
     duration: "2.5–3 hours",
-    priceRange: "$400",
-    touchUpPrice: "$120",
+    priceRange: "$550",
+    touchUpPrice: "$150",
     image: "/images/custom/combo-brows.png",
     processSteps: [
       {
@@ -274,8 +279,8 @@ export const services: Service[] = [
     description:
       "Lip blush is a semi-permanent cosmetic tattoo that enhances the natural color, shape, and definition of your lips. This technique deposits a soft wash of pigment into the lips, creating a beautiful tinted effect that looks like you are always wearing your favorite lip color.\n\nThe lip blush technique at Velvet Brow Studio goes beyond simple color application. Our artists carefully correct asymmetries, define the lip border for a more polished appearance, and can even create the illusion of fuller lips through strategic shading and color placement. The result is effortlessly beautiful lips that look naturally flushed and youthful.\n\nWhether you want to correct uneven lip color, add definition to pale lips, restore color lost with age, or simply wake up with gorgeous lips every morning, lip blush is the perfect solution. Choose from a range of colors, from subtle nudes to rosy pinks to berry tones.",
     duration: "1.5–2 hours",
-    priceRange: "$388",
-    touchUpPrice: "$100",
+    priceRange: "$550",
+    touchUpPrice: "$150",
     image: "/images/custom/lip-blush.png",
     processSteps: [
       {
@@ -362,8 +367,8 @@ export const services: Service[] = [
     description:
       "Permanent eyeliner is a semi-permanent cosmetic tattoo applied along the lash line to create the appearance of perfectly applied eyeliner that never smudges, smears, or fades throughout the day. This treatment is one of the most transformative permanent makeup procedures, instantly making eyes appear larger, more defined, and more awake.\n\nAt Velvet Brow Studio, we offer a range of permanent eyeliner styles to suit your preferences, from a subtle lash line enhancement that adds invisible fullness between the lashes to a thin classic line for everyday definition to a slightly thicker wing for a more dramatic look. Our artists work with you to choose the perfect style and thickness.\n\nPermanent eyeliner is perfect for anyone who wants to save time on their daily makeup routine, those with allergies to conventional eyeliner products, contact lens wearers who struggle with traditional liner, or anyone who wants smudge-proof definition around the clock.",
     duration: "~1.5 hours",
-    priceRange: "$388",
-    touchUpPrice: "$100",
+    priceRange: "$550",
+    touchUpPrice: "$150",
     image: "/images/custom/permanent-eyeliner.png",
     processSteps: [
       {
@@ -453,11 +458,24 @@ export function getAllServiceSlugs(): string[] {
 }
 
 export async function getServices(): Promise<Service[]> {
-  const stored = await readJsonFileOrNull<Service>("services.json");
-  // null = blob doesn't exist yet → seed it. [] or non-empty = return as-is (respect CMS state).
-  if (stored !== null) return stored;
-  await writeJsonFile("services.json", services);
-  return services;
+  const [stored, meta] = await Promise.all([
+    readJsonFileOrNull<Service>("services.json"),
+    readJsonObject<{ v: number }>("services-meta.json"),
+  ]);
+
+  // If blob exists AND migration is current → return as-is (respect admin edits)
+  if (stored !== null && (meta?.v ?? 0) >= SEED_VERSION) return stored;
+
+  // Either first-time seed (null) or migration needed (version behind)
+  const next = stored !== null
+    ? stored.map((s) => ({ ...s, priceRange: "$550", touchUpPrice: "$150" }))
+    : services;
+
+  await Promise.all([
+    writeJsonFile("services.json", next),
+    writeJsonObject("services-meta.json", { v: SEED_VERSION }),
+  ]);
+  return next;
 }
 
 export async function getServiceBySlugAsync(
