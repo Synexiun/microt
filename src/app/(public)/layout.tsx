@@ -4,6 +4,8 @@ import ScrollToTop from '@/components/public/ScrollToTop';
 import NewsletterModal from '@/components/public/NewsletterModal';
 import { getSiteContent } from '@/lib/constants';
 
+export const dynamic = "force-dynamic";
+
 export default async function PublicLayout({
   children,
 }: {

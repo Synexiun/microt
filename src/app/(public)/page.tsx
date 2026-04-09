@@ -11,6 +11,8 @@ import { getSiteContent } from '@/lib/constants';
 import { getTestimonials } from '@/lib/testimonials';
 import { getServices } from '@/lib/services';
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [{ brand, businessHours }, testimonials, services] = await Promise.all([
     getSiteContent(),
