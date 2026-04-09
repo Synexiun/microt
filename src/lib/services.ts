@@ -4,7 +4,7 @@ import { readJsonFileOrNull, writeJsonFile, readJsonObject, writeJsonObject } fr
 // Bump this number whenever the seed data changes in a way that should overwrite
 // existing blob data (e.g. a price update). The migration runs once and then
 // the version is stored so it never runs again (admin changes after that are respected).
-const SEED_VERSION = 2;
+const SEED_VERSION = 3;
 
 export const services: Service[] = [
   {
@@ -180,94 +180,6 @@ export const services: Service[] = [
         question: "Is ombre powder suitable for oily skin?",
         answer:
           "Yes — in fact, ombre powder brows are especially recommended for oily or combination skin. The machine technique creates more lasting pigment retention compared to manual microblading on skin that produces more oil.",
-      },
-    ],
-  },
-  {
-    slug: "combo-brows",
-    name: "Combo Brows",
-    shortDescription:
-      "The best of both worlds — hair strokes combined with soft powder shading.",
-    description:
-      "Combo brows merge two techniques: microblading and powder ombre shading. The result is a beautifully dimensional brow that features realistic hair strokes at the front and a soft, powdery gradient through the body and tail of the brow.\n\nThis technique is ideal for clients who want the natural hair-stroke look of microblading with the added fullness and definition that powder shading provides. Combo brows work exceptionally well on all skin types, including oily skin where traditional microblading alone may not retain as crisply.\n\nAt Velvet Brow Studio, our combo brow artists excel at blending these two techniques seamlessly, creating a gradient effect that looks like perfectly applied brow makeup — except it stays on 24/7. Wake up every morning with flawless brows that require zero effort.",
-    duration: "2.5–3 hours",
-    priceRange: "$550",
-    touchUpPrice: "$150",
-    image: "/images/custom/combo-brows.png",
-    processSteps: [
-      {
-        title: "Shape Design & Consultation",
-        description:
-          "We discuss your desired look and design the ideal shape using precise mapping techniques. Together, we determine the perfect balance of hair strokes and shading for your unique features.",
-      },
-      {
-        title: "Custom Pigment Blending",
-        description:
-          "Pigments are custom-blended for both the hair-stroke and shading portions of the brow. Colors are selected to create a natural, dimensional gradient effect.",
-      },
-      {
-        title: "Numbing & Skin Prep",
-        description:
-          "A topical numbing agent is applied for your comfort. The skin is prepared and sanitized to ensure optimal pigment retention and a smooth procedure.",
-      },
-      {
-        title: "Hair Strokes & Shading",
-        description:
-          "Microbladed hair strokes are created at the front of the brow for a natural start, then seamlessly transitioned into soft powder shading through the body and tail for added fullness.",
-      },
-      {
-        title: "Final Review & Aftercare",
-        description:
-          "The finished brows are reviewed and any final adjustments made. You receive comprehensive aftercare instructions and schedule your touch-up appointment for 6–7 weeks out.",
-      },
-    ],
-    healingTimeline: [
-      {
-        day: "Days 1–3",
-        description:
-          "Brows will look bold, dark, and very defined — much darker than the healed result. Some redness and mild swelling is normal. Keep the area dry and apply aftercare ointment.",
-      },
-      {
-        day: "Days 4–7",
-        description:
-          "Scabbing and flaking begins. The shaded areas may flake in larger patches than the hair-stroke areas. Do not pick or pull at any flakes. Let them shed naturally.",
-      },
-      {
-        day: "Days 8–14",
-        description:
-          "Color appears significantly lighter as the skin heals over the pigment. Some areas may look patchy. This is the ghost phase and is completely temporary.",
-      },
-      {
-        day: "Days 15–30",
-        description:
-          "The true color gradually re-emerges. Both the hair strokes and shading begin to look soft, natural, and beautifully blended as the skin completes its healing cycle.",
-      },
-      {
-        day: "Week 6–7",
-        description:
-          "Touch-up appointment to perfect the results. Additional hair strokes or shading can be added, and color intensity can be adjusted to achieve your ideal look.",
-      },
-    ],
-    faqs: [
-      {
-        question: "Who is a good candidate for combo brows?",
-        answer:
-          "Combo brows are excellent for almost everyone, but especially recommended for clients with oily or combination skin, those who want a fuller brow look, or anyone who loves the hair-stroke look but wants added dimension and longevity.",
-      },
-      {
-        question: "Do combo brows last longer than microblading alone?",
-        answer:
-          "Yes, typically. The powder shading component tends to retain better over time, especially on oily skin. Combo brows generally last 18 to 24 months before a refresh is needed, compared to 12–18 months for microblading alone.",
-      },
-      {
-        question: "Will combo brows look like heavy makeup?",
-        answer:
-          "Not at all. Our artists specialize in creating a soft, natural gradient that mimics the look of lightly applied brow powder. The effect is polished yet natural — like your best brow day, every day.",
-      },
-      {
-        question: "How do I prepare for my combo brow appointment?",
-        answer:
-          "Avoid alcohol, caffeine, and blood-thinning medications 24 hours before your appointment. Do not wax or tint your brows for at least one week prior. Come with clean skin free of makeup in the brow area.",
       },
     ],
   },
@@ -468,7 +380,9 @@ export async function getServices(): Promise<Service[]> {
 
   // Either first-time seed (null) or migration needed (version behind)
   const next = stored !== null
-    ? stored.map((s) => ({ ...s, priceRange: "$550", touchUpPrice: "$150" }))
+    ? stored
+        .filter((s) => s.slug !== "combo-brows")
+        .map((s) => ({ ...s, priceRange: "$550", touchUpPrice: "$150" }))
     : services;
 
   await Promise.all([
