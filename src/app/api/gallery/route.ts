@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     // Upload to Vercel Blob
     const ext = file.name.split(".").pop() || "jpg";
     const filename = `gallery/${uuidv4()}.${ext}`;
-    const blob = await put(filename, file, { access: "public" });
+    const blob = await put(filename, file, { access: "private" });
 
     // Create gallery record — store the Blob URL as the filename
     const galleryImage: GalleryImage = {

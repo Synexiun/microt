@@ -90,7 +90,11 @@ export default function ServicesSection({ services }: { services: Service[] }) {
               {/* Service image - using high-quality local custom AI generated images */}
               <div className="w-full aspect-[16/10] rounded-lg overflow-hidden mb-6 bg-dark border border-dark-lighter relative">
                 <Image
-                  src={service.image}
+                  src={
+                    service.image?.includes(".blob.vercel-storage.com")
+                      ? `/api/blob-image?url=${encodeURIComponent(service.image)}`
+                      : service.image
+                  }
                   alt={service.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"

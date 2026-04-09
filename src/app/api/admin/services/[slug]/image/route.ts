@@ -52,7 +52,7 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
 
     const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
     const blob = await put(`services/${slug}-${uuidv4()}.${ext}`, file, {
-      access: "public",
+      access: "private",
       allowOverwrite: true,
     });
 

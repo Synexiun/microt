@@ -239,7 +239,11 @@ export default function AdminServiceEditPage() {
             {form.image && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={form.image}
+                src={
+                  form.image.includes(".blob.vercel-storage.com")
+                    ? `/api/blob-image?url=${encodeURIComponent(form.image)}`
+                    : form.image
+                }
                 alt={form.name}
                 className="w-32 h-32 object-cover rounded border border-dark-lighter flex-shrink-0"
               />
@@ -256,9 +260,9 @@ export default function AdminServiceEditPage() {
                 className="block text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-gold/10 file:text-gold file:text-xs file:font-medium hover:file:bg-gold/20 file:cursor-pointer"
               />
               {uploading && (
-                <p className="text-gold text-xs mt-2 flex items-center gap-2">
-                  <Spinner /> Uploading...
-                </p>
+                <div className="text-gold text-xs mt-2 flex items-center gap-2">
+                  <Spinner size="sm" /> Uploading...
+                </div>
               )}
             </div>
           </div>
