@@ -9,18 +9,20 @@ import ContactSection from '@/components/public/ContactSection';
 import InstagramSection from '@/components/public/InstagramSection';
 import { getSiteContent } from '@/lib/constants';
 import { getTestimonials } from '@/lib/testimonials';
+import { getServices } from '@/lib/services';
 
 export default async function HomePage() {
-  const [{ brand, businessHours }, testimonials] = await Promise.all([
+  const [{ brand, businessHours }, testimonials, services] = await Promise.all([
     getSiteContent(),
     getTestimonials(),
+    getServices(),
   ]);
 
   return (
     <>
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
+      <ServicesSection services={services} />
       <GallerySection />
       <TestimonialsSection testimonials={testimonials} />
       <BookingCTASection />
