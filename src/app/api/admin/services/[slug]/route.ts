@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServices } from "@/lib/services";
-import { writeJsonFile } from "@/lib/data";
+import { readJsonFileOrNull, writeJsonFile } from "@/lib/data";
 import type { Service } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -31,7 +31,8 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
   try {
     const { slug } = await params;
     const body = await request.json();
-    const services = await getServices();
+    // Read directly to avoid triggering migration on every save
+    const services = await readJsonFileOrNull<Service>("services.json") ?? await getServices();
     const index = services.findIndex((s) => s.slug === slug);
     if (index === -1) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
@@ -41,9 +42,10 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
     await writeJsonFile<Service>("services.json", services);
     return NextResponse.json(updated);
   } catch (error) {
-    console.error("Error updating service:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error("Error updating service:", message, error);
     return NextResponse.json(
-      { error: "Failed to update service" },
+      { error: `Failed to update service: ${message}` },
       { status: 500 }
     );
   }
