@@ -4,7 +4,7 @@ import { readJsonFileOrNull, writeJsonFile, readJsonObject, writeJsonObject } fr
 // Bump this number whenever the seed data changes in a way that should overwrite
 // existing blob data (e.g. a price update). The migration runs once and then
 // the version is stored so it never runs again (admin changes after that are respected).
-const SEED_VERSION = 5;
+const SEED_VERSION = 6;
 
 export const services: Service[] = [
   {
@@ -270,9 +270,9 @@ export const services: Service[] = [
     ],
     faqs: [
       {
-        question: "How long does lip blush last?",
+        question: "What is Lip Blush?",
         answer:
-          "Lip blush typically lasts 2 to 3 years, making it one of the longer-lasting permanent makeup treatments. The longevity depends on your lip care habits, sun exposure, and lifestyle. A touch-up every 2–3 years maintains the vibrancy.",
+          "Having very pale or dark lips can be a huge knock on your confidence. You walk around seeing these beautiful people with luscious lips and want the same for yourself. There's nothing wrong with that. Lip blushing can be done with a very subtle and natural color or a bold red; it's totally up to you! We specialize in very natural looks and believe that it looks best on most clients.",
       },
       {
         question: "Is lip blush painful?",
@@ -280,14 +280,24 @@ export const services: Service[] = [
           "The lips are a sensitive area, but our thorough numbing protocol ensures most clients experience only mild discomfort. Many clients describe it as a tingling or vibrating sensation. We continuously check your comfort level throughout the procedure.",
       },
       {
+        question: "How long does it last?",
+        answer:
+          "Lip blushing lasts 2-3 years and varies depending on your skin type and lifestyle. Lip blushing done on oily skin tends to fade faster than dry or normal skin.",
+      },
+      {
+        question: "What is the healing process?",
+        answer:
+          "Your lips will need to heal for 10 days before you see the final result. During that healing process, the color of your lips will be slightly off and they might scab. You then come in for a follow up appointment 4-6 weeks after the initial procedure.",
+      },
+      {
         question: "Can lip blush make my lips look bigger?",
         answer:
           "While lip blush does not physically change lip size, it can create the illusion of fuller lips. By slightly extending the color just to the edge of the vermillion border and using strategic shading, we can enhance the appearance of lip volume and definition.",
       },
       {
-        question: "I get cold sores. Can I still get lip blush?",
+        question: "What if I get cold sores?",
         answer:
-          "Yes, but you must take an antiviral medication (such as Valtrex) starting 3 days before your appointment and continuing for 3 days after. This helps prevent a cold sore outbreak that could affect the healing and pigment retention.",
+          "If you have had a cold sore in the past, you will need to advise your doctor and take a medicine similar to Valtrex to prevent you from getting a cold sore after the treatment.",
       },
     ],
   },
