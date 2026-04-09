@@ -4,7 +4,7 @@ import { readJsonFileOrNull, writeJsonFile, readJsonObject, writeJsonObject } fr
 // Bump this number whenever the seed data changes in a way that should overwrite
 // existing blob data (e.g. a price update). The migration runs once and then
 // the version is stored so it never runs again (admin changes after that are respected).
-const SEED_VERSION = 3;
+const SEED_VERSION = 4;
 
 export const services: Service[] = [
   {
@@ -74,9 +74,24 @@ export const services: Service[] = [
     ],
     faqs: [
       {
-        question: "How long does microblading last?",
+        question: "What is Microblading?",
         answer:
-          "Microblading typically lasts 12 to 18 months, depending on your skin type, lifestyle, and aftercare routine. Annual touch-ups are recommended to maintain the crisp, fresh appearance of your brows.",
+          "Microblading is not the same as a traditional eyebrow tattoo. With microblading, we draw each hair stroke one by one to create a very real looking eyebrow. This is why getting your brows microbladed with elite can be a life changing experience.",
+      },
+      {
+        question: "What is the difference between microblading and a brow tattoo?",
+        answer:
+          "Unlike traditional tattoos that go deep into the skin and use ink, microblading uses specialized pigment deposited into the upper dermis. The strokes mimic natural hair and the pigment fades naturally over time rather than turning blue or grey.",
+      },
+      {
+        question: "How long does it last?",
+        answer:
+          "Microblading lasts 1-2 years and varies depending on your skin type and lifestyle. Microblading done on oily skin tends to fade faster than dry or normal skin. You need to keep touch up if you like the design.",
+      },
+      {
+        question: "What is the healing process look like?",
+        answer:
+          "Your brows will need to heal for 10 days before you see the final result. During that healing process, the color of your brows will be slightly off and they might scab. You then come in for a follow up appointment 4-6 weeks after the initial procedure.",
       },
       {
         question: "Is microblading painful?",
@@ -87,11 +102,6 @@ export const services: Service[] = [
         question: "Who is not a good candidate for microblading?",
         answer:
           "Microblading may not be suitable for those who are pregnant or nursing, have diabetes, are on blood thinners, have active skin conditions in the brow area, or have very oily skin (combo brows may be a better option).",
-      },
-      {
-        question: "What is the difference between microblading and a brow tattoo?",
-        answer:
-          "Unlike traditional tattoos that go deep into the skin and use ink, microblading uses specialized pigment deposited into the upper dermis. The strokes mimic natural hair and the pigment fades naturally over time rather than turning blue or grey.",
       },
     ],
   },
@@ -162,14 +172,24 @@ export const services: Service[] = [
     ],
     faqs: [
       {
+        question: "What is Powder/Ombre Brows?",
+        answer:
+          "Powder brows is a much more defined eyebrow look than you will get with microblading. It looks less natural than microblading but will complement your makeup better and give you the look of perfectly shaped eyebrows all day long. Microblading is best suited for someone who does not wear makeup frequently and wants their brows to look very natural. Powder brows looks best on someone who wears makeup frequently and does not want to do their eyebrows every single time, saving lots of time.",
+      },
+      {
         question: "What is the difference between ombre brows and microblading?",
         answer:
           "Microblading uses a manual blade to create individual hair-stroke impressions. Ombre Powder Brows use a digital machine to create a soft, pixelated powder effect. Ombre brows tend to last longer and retain better on oily or mature skin types.",
       },
       {
-        question: "How long do Ombre / Powder Brows last?",
+        question: "How long does it last?",
         answer:
-          "Ombre Powder Brows typically last 18 to 24 months, often outlasting microblading. Oily skin types and those who spend a lot of time in the sun may need a refresh sooner. A touch-up every 1–2 years keeps them looking fresh.",
+          "Microblading lasts 1-2 years and varies depending on your skin type and lifestyle. Microblading done on oily skin tends to fade faster than dry or normal skin.",
+      },
+      {
+        question: "What is the healing process look like?",
+        answer:
+          "Your brows will need to heal for 10 days before you see the final result. During that healing process, the color of your brows will be slightly off and they might scab. You then come in for a follow up appointment 4-6 weeks after the initial procedure.",
       },
       {
         question: "Will ombre brows look natural?",
@@ -382,7 +402,12 @@ export async function getServices(): Promise<Service[]> {
   const next = stored !== null
     ? stored
         .filter((s) => s.slug !== "combo-brows")
-        .map((s) => ({ ...s, priceRange: "$550", touchUpPrice: "$150" }))
+        .map((s) => {
+          const seed = services.find((seed) => seed.slug === s.slug);
+          // Preserve custom blob image; update prices + FAQs from seed
+          const image = s.image?.startsWith("https") ? s.image : seed?.image ?? s.image;
+          return { ...s, image, priceRange: "$550", touchUpPrice: "$150", faqs: seed?.faqs ?? s.faqs };
+        })
     : services;
 
   await Promise.all([
