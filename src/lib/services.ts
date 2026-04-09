@@ -4,7 +4,7 @@ import { readJsonFileOrNull, writeJsonFile, readJsonObject, writeJsonObject } fr
 // Bump this number whenever the seed data changes in a way that should overwrite
 // existing blob data (e.g. a price update). The migration runs once and then
 // the version is stored so it never runs again (admin changes after that are respected).
-const SEED_VERSION = 4;
+const SEED_VERSION = 5;
 
 export const services: Service[] = [
   {
@@ -358,14 +358,24 @@ export const services: Service[] = [
     ],
     faqs: [
       {
+        question: "What is Semi-Permanent Eyeliner?",
+        answer:
+          "What's the point of having gorgeous eyes if nobody sees them? Semi-permanent eyeliner is best on someone who wears makeup frequently. This will give you a perfectly placed eyeliner and you will never have to waste your time doing it again.",
+      },
+      {
         question: "Does permanent eyeliner hurt?",
         answer:
           "The eye area is sensitive, but our numbing protocol is very effective. Most clients experience a mild tickling or vibrating sensation. Some areas may feel more sensitive than others, and we adjust our technique and numbing throughout the procedure for your comfort.",
       },
       {
-        question: "How long does permanent eyeliner last?",
+        question: "How long does it last?",
         answer:
-          "Permanent eyeliner typically lasts 2 to 5 years depending on the style, your skin type, and lifestyle factors. Lash line enhancements may fade sooner than thicker liner styles. Touch-ups every 1–2 years keep the liner looking fresh and defined.",
+          "Eyeliner and lash line enhancements last 1-3 years. It truly depends on your skin type (oily or dry) as well as your lifestyle. For example: if you are an active swimmer and have very oily skin, it will most likely last 1 year.",
+      },
+      {
+        question: "What does the healing process look like?",
+        answer:
+          "Your eyes will be a bit sore for a few hours after the procedure where you will just need to ice them. The color will need to heal for a few days before you see the final results. During that healing process, the color of your eyeliner will be slightly off. You then come in for a follow up appointment 4-6 weeks after the initial procedure.",
       },
       {
         question: "Can I wear contact lenses during the procedure?",
