@@ -20,6 +20,24 @@ export async function readJsonFile<T>(filename: string): Promise<T[]> {
   }
 }
 
+// Returns null when the blob file does not exist (vs [] when it exists but is empty).
+// Use this where seeding should only happen on first-ever write, not after all items are deleted.
+export async function readJsonFileOrNull<T>(filename: string): Promise<T[] | null> {
+  try {
+    const { blobs } = await list({ prefix: `data/${filename}` });
+    if (blobs.length === 0) return null; // file doesn't exist yet
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
+    const response = await fetch(blobs[0].url, {
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+      cache: "no-store",
+    });
+    if (!response.ok) return null;
+    return (await response.json()) as T[];
+  } catch {
+    return null;
+  }
+}
+
 export async function writeJsonFile<T>(
   filename: string,
   data: T[]

@@ -12,6 +12,7 @@ export default function AdminServicesPage() {
   const [loading, setLoading] = useState(true);
   const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
   const [savingOrder, setSavingOrder] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   async function fetchServices() {
     try {
@@ -51,13 +52,19 @@ export default function AdminServicesPage() {
   async function handleDelete(slug: string) {
     if (!confirm(`Delete "${slug}"? This cannot be undone.`)) return;
     setDeletingSlug(slug);
+    setDeleteError(null);
     try {
       const res = await fetch(`/api/admin/services/${slug}`, {
         method: "DELETE",
       });
       if (res.ok) {
         setServices((prev) => prev.filter((s) => s.slug !== slug));
+      } else {
+        const err = await res.json().catch(() => ({}));
+        setDeleteError(err.error || `Failed to delete "${slug}".`);
       }
+    } catch {
+      setDeleteError("Network error — delete failed.");
     } finally {
       setDeletingSlug(null);
     }
@@ -86,6 +93,12 @@ export default function AdminServicesPage() {
           </span>
         )}
       </div>
+
+      {deleteError && (
+        <div className="mb-4 px-4 py-3 bg-red-500/10 border border-red-500/30 rounded text-red-400 text-sm">
+          {deleteError}
+        </div>
+      )}
 
       <div className="space-y-3">
         {services.map((service, index) => (

@@ -2,16 +2,18 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { services } from "@/lib/services";
+import type { Service } from "@/types";
 
 interface ServiceStepProps {
   selectedSlug: string;
   onSelect: (slug: string) => void;
+  services: Service[];
 }
 
 export default function ServiceStep({
   selectedSlug,
   onSelect,
+  services,
 }: ServiceStepProps) {
   return (
     <div className="w-full max-w-4xl mx-auto px-4">

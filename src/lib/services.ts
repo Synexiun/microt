@@ -1,5 +1,5 @@
 import { Service } from "@/types";
-import { readJsonFile, writeJsonFile } from "@/lib/data";
+import { readJsonFileOrNull, writeJsonFile } from "@/lib/data";
 
 export const services: Service[] = [
   {
@@ -453,8 +453,9 @@ export function getAllServiceSlugs(): string[] {
 }
 
 export async function getServices(): Promise<Service[]> {
-  const stored = await readJsonFile<Service>("services.json");
-  if (stored.length > 0) return stored;
+  const stored = await readJsonFileOrNull<Service>("services.json");
+  // null = blob doesn't exist yet → seed it. [] or non-empty = return as-is (respect CMS state).
+  if (stored !== null) return stored;
   await writeJsonFile("services.json", services);
   return services;
 }

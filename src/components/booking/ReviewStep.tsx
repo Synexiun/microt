@@ -4,7 +4,7 @@ import React from "react";
 import { format } from "date-fns";
 import GoldButton from "@/components/ui/GoldButton";
 import Spinner from "@/components/ui/Spinner";
-import { services } from "@/lib/services";
+import type { Service } from "@/types";
 
 interface BookingData {
   serviceSlug: string;
@@ -21,6 +21,7 @@ interface ReviewStepProps {
   onEdit: (step: number) => void;
   onConfirm: () => void;
   isSubmitting: boolean;
+  services: Service[];
 }
 
 export default function ReviewStep({
@@ -28,6 +29,7 @@ export default function ReviewStep({
   onEdit,
   onConfirm,
   isSubmitting,
+  services,
 }: ReviewStepProps) {
   const service = services.find((s) => s.slug === bookingData.serviceSlug);
   const formattedDate = bookingData.date

@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-import { readJsonFile, writeJsonFile } from "@/lib/data";
+import { readJsonFileOrNull, writeJsonFile } from "@/lib/data";
 import { sampleTestimonials } from "@/lib/sample-data";
 import type { Testimonial } from "@/types";
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  const stored = await readJsonFile<Testimonial>("testimonials.json");
-  if (stored.length > 0) return stored;
+  const stored = await readJsonFileOrNull<Testimonial>("testimonials.json");
+  if (stored !== null && stored.length > 0) return stored;
   // Seed from sample data on first call
   const seeded: Testimonial[] = sampleTestimonials.map((t) => ({
     id: uuidv4(),
