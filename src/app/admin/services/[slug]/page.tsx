@@ -105,7 +105,8 @@ export default function AdminServiceEditPage() {
       });
       if (res.ok) {
         const { image } = await res.json();
-        setField("image", image);
+        // Update preview without marking form dirty — upload already saved to services.json
+        setForm((prev) => prev ? { ...prev, image } : prev);
         setMessage({ type: "success", text: "Image uploaded." });
       } else {
         const err = await res.json();
