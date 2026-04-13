@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServices } from "@/lib/services";
-import { readJsonFileOrNull, writeJsonFile } from "@/lib/data";
-import type { Service } from "@/types";
+import { readJsonFile, readJsonFileOrNull, writeJsonFile } from "@/lib/data";
+import { serviceEditSchema } from "@/lib/validators";
+import type { Service, GalleryImage, Testimonial } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +38,14 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
     if (index === -1) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
-    const updated: Service = { ...services[index], ...body, slug };
+    const result = serviceEditSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Validation failed", details: result.error.flatten() },
+        { status: 400 }
+      );
+    }
+    const updated: Service = { ...result.data, slug };
     services[index] = updated;
     await writeJsonFile<Service>("services.json", services);
     return NextResponse.json(updated);
@@ -59,6 +67,21 @@ export async function DELETE(_request: NextRequest, { params }: RouteContext) {
     if (filtered.length === services.length) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
+
+    // Cascade delete: remove related gallery images
+    const gallery = await readJsonFile<GalleryImage>("gallery.json");
+    await writeJsonFile<GalleryImage>(
+      "gallery.json",
+      gallery.filter((img) => img.serviceSlug !== slug)
+    );
+
+    // Cascade delete: remove related testimonials
+    const testimonials = await readJsonFile<Testimonial>("testimonials.json");
+    await writeJsonFile<Testimonial>(
+      "testimonials.json",
+      testimonials.filter((t) => t.service !== slug)
+    );
+
     await writeJsonFile<Service>("services.json", filtered);
     return NextResponse.json({ success: true });
   } catch (error) {

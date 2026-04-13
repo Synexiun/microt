@@ -50,7 +50,7 @@ export default function ListEditor({ items, fields, onChange }: ListEditorProps)
     <div className="space-y-3">
       {items.map((item, index) => (
         <div
-          key={index}
+          key={`${index}-${Object.values(item).join("-").slice(0, 40)}`}
           className="bg-dark border border-dark-lighter rounded-lg p-4 space-y-3"
         >
           <div className="flex items-center justify-between mb-1">

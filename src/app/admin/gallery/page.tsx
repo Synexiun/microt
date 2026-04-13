@@ -9,10 +9,9 @@ import type { GalleryImage } from "@/types";
 
 const SERVICE_OPTIONS = [
   { value: "microblading", label: "Microblading" },
-  { value: "phibrows", label: "PhiBrows" },
-  { value: "combo-brows", label: "Combo Brows" },
+  { value: "ombre-powder-brows", label: "Ombre/Powder Brows" },
   { value: "lip-blush", label: "Lip Blush" },
-  { value: "permanent-eyeliner", label: "Permanent Eyeliner" },
+  { value: "eye-liner", label: "Eye Liner" },
 ];
 
 export default function GalleryPage() {

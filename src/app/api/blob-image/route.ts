@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
       headers: {
         "Content-Type": contentType,
         // Images have UUID paths — they're immutable, safe to cache forever
-        "Cache-Control": "public, max-age=31536000, immutable",
+        "Cache-Control": "public, max-age=2592000",
       },
     });
   } catch (error) {
