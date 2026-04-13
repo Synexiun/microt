@@ -3,13 +3,18 @@ import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, updateInJsonFile } from "@/lib/data";
 import { bookingSchema } from "@/lib/validators";
 import { getServiceBySlugAsync } from "@/lib/services";
-import { sendBookingNotification } from "@/lib/email";
+import { sendBookingNotification, sendClientConfirmation } from "@/lib/email";
+import { isAdminRequest } from "@/lib/server-auth";
 
 export const dynamic = "force-dynamic";
 import type { Appointment, Customer } from "@/types";
 
 export async function GET(request: NextRequest) {
   try {
+    if (!(await isAdminRequest())) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
     const date = searchParams.get("date");
@@ -99,6 +104,7 @@ export async function POST(request: NextRequest) {
 
     // Fire-and-forget — don't let email failure block the booking response
     sendBookingNotification(appointment);
+    sendClientConfirmation(appointment);
 
     return NextResponse.json(appointment, { status: 201 });
   } catch (error) {
