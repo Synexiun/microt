@@ -3,6 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 const SESSION_COOKIE_NAME = "admin_session";
 const SESSION_EXPIRY = 8 * 60 * 60 * 1000; // 8 hours in ms
 
+function getSecret(): string {
+  const secret = process.env.ADMIN_PASSWORD;
+  if (!secret) throw new Error("ADMIN_PASSWORD environment variable is not set");
+  return secret;
+}
+
 async function isValidToken(token: string): Promise<boolean> {
   try {
     const [timestampStr, hmac] = token.split(":");
@@ -10,8 +16,7 @@ async function isValidToken(token: string): Promise<boolean> {
     if (isNaN(timestamp) || !hmac) return false;
     if (Date.now() - timestamp > SESSION_EXPIRY) return false;
 
-    // Use Web Crypto API (Edge Runtime compatible)
-    const secret = process.env.ADMIN_PASSWORD || "admin123";
+    const secret = getSecret();
     const encoder = new TextEncoder();
     const key = await crypto.subtle.importKey(
       "raw",
@@ -50,6 +55,15 @@ export async function middleware(request: NextRequest) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       }
       return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+
+    // CSRF: for state-mutating admin API requests, verify origin matches host
+    if (isAdminApi && request.method !== "GET") {
+      const origin = request.headers.get("origin");
+      const host = request.headers.get("host");
+      if (origin && host && !origin.includes(host)) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
     }
   }
 

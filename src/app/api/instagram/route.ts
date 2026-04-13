@@ -30,6 +30,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Only accept HTTPS Instagram URLs
+    let parsed: URL;
+    try {
+      parsed = new URL(url);
+    } catch {
+      return NextResponse.json({ error: "Invalid URL format" }, { status: 400 });
+    }
+    if (
+      parsed.protocol !== "https:" ||
+      !["instagram.com", "www.instagram.com"].includes(parsed.hostname)
+    ) {
+      return NextResponse.json(
+        { error: "URL must be a valid https://instagram.com link" },
+        { status: 400 }
+      );
+    }
+
     const post: InstagramPost = {
       id: uuidv4(),
       url,

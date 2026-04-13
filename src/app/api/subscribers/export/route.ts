@@ -10,7 +10,8 @@ export async function GET() {
 
     const csvRows = ["id,email,subscribedAt"];
     for (const sub of subscribers) {
-      csvRows.push(`${sub.id},${sub.email},${sub.subscribedAt}`);
+      const escape = (v: string) => `"${v.replace(/"/g, '""')}"`;
+      csvRows.push(`${escape(sub.id)},${escape(sub.email)},${escape(sub.subscribedAt)}`);
     }
     const csv = csvRows.join("\n");
 
