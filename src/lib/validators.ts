@@ -38,3 +38,18 @@ export const galleryUploadSchema = z.object({
 });
 
 export type GalleryUploadFormData = z.infer<typeof galleryUploadSchema>;
+
+export const serviceEditSchema = z.object({
+  name: z.string().min(1),
+  shortDescription: z.string().min(1),
+  description: z.string().min(1),
+  duration: z.string().min(1),
+  priceRange: z.string().min(1),
+  touchUpPrice: z.string().optional(),
+  image: z.string().min(1),
+  processSteps: z.array(z.object({ title: z.string(), description: z.string() })),
+  healingTimeline: z.array(z.object({ day: z.string(), description: z.string() })),
+  faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
+});
+
+export type ServiceEditData = z.infer<typeof serviceEditSchema>;
