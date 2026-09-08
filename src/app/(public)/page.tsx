@@ -10,14 +10,22 @@ import InstagramSection from '@/components/public/InstagramSection';
 import { getSiteContent } from '@/lib/constants';
 import { getTestimonials } from '@/lib/testimonials';
 import { getServices } from '@/lib/services';
+import { readJsonFile } from '@/lib/data';
+import type { InstagramPost } from '@/types';
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [{ brand, businessHours }, testimonials, services] = await Promise.all([
+  const [
+    { brand, businessHours, socialLinks },
+    testimonials,
+    services,
+    instagramPosts,
+  ] = await Promise.all([
     getSiteContent(),
     getTestimonials(),
     getServices(),
+    readJsonFile<InstagramPost>('instagram.json'),
   ]);
 
   return (
@@ -30,7 +38,11 @@ export default async function HomePage() {
       <BookingCTASection />
       <ConsentQRSection />
       <ContactSection brand={brand} businessHours={businessHours} />
-      <InstagramSection instagramHandle={brand.instagramHandle} />
+      <InstagramSection
+        instagramHandle={brand.instagramHandle}
+        profileUrl={socialLinks.instagram}
+        posts={instagramPosts}
+      />
     </>
   );
 }

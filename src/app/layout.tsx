@@ -18,7 +18,10 @@ const jost = Jost({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://velvetbrow.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Velvet Brow by Tannaz | Luxury Brow & Permanent Makeup",
   description:
     "Velvet Brow by Tannaz offers luxury permanent makeup services in Costa Mesa, CA. Specializing in microblading, PhiBrows, combo brows, lip blush, and permanent eyeliner. Where precision meets beauty.",
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     title: "Velvet Brow by Tannaz | Luxury Brow & Permanent Makeup",
     description:
       "Luxury permanent makeup services in Costa Mesa, CA. Microblading, PhiBrows, combo brows, lip blush, and permanent eyeliner by expert artists.",
-    url: "https://velvetbrow.com",
+    url: siteUrl,
     siteName: "Velvet Brow by Tannaz",
     locale: "en_US",
     type: "website",

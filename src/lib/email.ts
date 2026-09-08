@@ -1,10 +1,25 @@
 import type { Appointment } from "@/types";
-import { BRAND } from "@/lib/constants";
 
 // Sender address. Must be a Resend-verified domain/address to actually deliver.
 // Override via the EMAIL_FROM env var once a sender/domain is verified in Resend.
 const FROM =
   process.env.EMAIL_FROM || "Velvet Brow by Tannaz <noreply@velvetbrow.com>";
+
+// The studio inbox has been given to us with two spellings ("velvet" and
+// "velevet"). Both are notified because guessing wrong silently loses bookings.
+const STUDIO_RECIPIENTS = [
+  "Velvetbrowbytannaz@gmail.com",
+  "velevetbrowbytannaz@gmail.com",
+];
+
+// STUDIO_EMAIL adds a recipient rather than replacing the defaults, so a stale
+// value in the environment can't cut the studio out of its own notifications.
+function studioRecipients(): string[] {
+  const override = process.env.STUDIO_EMAIL?.trim();
+  return override
+    ? Array.from(new Set([...STUDIO_RECIPIENTS, override]))
+    : STUDIO_RECIPIENTS;
+}
 
 // Send a booking notification email to the studio owner.
 // Fails silently if RESEND_API_KEY is not configured.
@@ -12,8 +27,6 @@ export async function sendBookingNotification(
   appointment: Appointment
 ): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
-  // Route to STUDIO_EMAIL if set, otherwise fall back to the studio contact email.
-  const studioEmail = process.env.STUDIO_EMAIL || BRAND.email;
   if (!apiKey) return;
 
   try {
@@ -27,7 +40,7 @@ export async function sendBookingNotification(
 
     await resend.emails.send({
       from: FROM,
-      to: studioEmail,
+      to: studioRecipients(),
       subject: `New Booking: ${appointment.clientName} — ${appointment.serviceName}`,
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">

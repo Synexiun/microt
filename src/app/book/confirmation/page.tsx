@@ -9,6 +9,17 @@ import Spinner from "@/components/ui/Spinner";
 import type { Appointment } from "@/types";
 import { format } from "date-fns";
 
+type BookingDetails = Pick<
+  Appointment,
+  | "id"
+  | "serviceName"
+  | "date"
+  | "time"
+  | "clientName"
+  | "clientEmail"
+  | "notes"
+>;
+
 function ConsentQRCard() {
   const [url, setUrl] = useState("https://velvetbrow.com/consent");
   useEffect(() => {
@@ -60,7 +71,7 @@ function ConsentQRCard() {
 export default function ConfirmationPage() {
   const searchParams = useSearchParams();
   const appointmentId = searchParams.get("id");
-  const [appointment, setAppointment] = useState<Appointment | null>(null);
+  const [appointment, setAppointment] = useState<BookingDetails | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -69,14 +80,13 @@ export default function ConfirmationPage() {
       return;
     }
 
-    // Attempt to fetch the appointment details from the list
     async function fetchAppointment() {
       try {
-        const res = await fetch("/api/appointments");
+        const res = await fetch(`/api/appointments/${appointmentId}`, {
+          cache: "no-store",
+        });
         if (res.ok) {
-          const appointments: Appointment[] = await res.json();
-          const found = appointments.find((a) => a.id === appointmentId);
-          if (found) setAppointment(found);
+          setAppointment(await res.json());
         }
       } catch {
         // Non-critical — we still display the confirmation

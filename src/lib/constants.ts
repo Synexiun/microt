@@ -7,7 +7,7 @@ export const BRAND = {
   address: "Costa Mesa · Santa Monica · Upland, CA",
   phone: "(909) 996-5307",
   email: "Velvetbrowbytannaz@gmail.com",
-  instagram: "@velvetbrowstudio",
+  instagram: "@velvet_brow_by_tannaz",
 } as const;
 
 export const BUSINESS_HOURS: Record<string, { open: string; close: string } | null> = {
@@ -21,7 +21,7 @@ export const BUSINESS_HOURS: Record<string, { open: string; close: string } | nu
 };
 
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/velvetbrowstudio",
+  instagram: "https://www.instagram.com/velvet_brow_by_tannaz",
   tiktok: "#",
   facebook: "#",
 } as const;
@@ -52,9 +52,10 @@ export interface SiteContent {
   contactVersion?: number;
 }
 
-// Bump to force a one-time refresh of code-managed brand fields (name/contact)
-// into an already-seeded site-content blob. Other admin edits are preserved.
-export const CONTACT_VERSION = 3;
+// Bump to force a one-time refresh of code-managed brand fields (name, contact,
+// Instagram) into an already-seeded site-content blob. Other admin edits are
+// preserved.
+export const CONTACT_VERSION = 4;
 
 const DEFAULT_SITE_CONTENT: SiteContent = {
   brand: {
@@ -90,6 +91,11 @@ export async function getSiteContent(): Promise<SiteContent> {
         email: BRAND.email,
         location: BRAND.location,
         address: BRAND.address,
+        instagramHandle: BRAND.instagram,
+      },
+      socialLinks: {
+        ...stored.socialLinks,
+        instagram: SOCIAL_LINKS.instagram,
       },
     };
     await writeJsonObject("site-content.json", migrated);

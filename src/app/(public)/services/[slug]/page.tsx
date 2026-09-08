@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     openGraph: {
       title: `${service.name} | Velvet Brow by Tannaz`,
       description: service.shortDescription,
-      url: `https://velvetbrow.com/services/${service.slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://velvetbrow.com"}/services/${service.slug}`,
       siteName: "Velvet Brow by Tannaz",
       locale: "en_US",
       type: "website",
