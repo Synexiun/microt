@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { waitUntil } from "@vercel/functions";
 import { v4 as uuidv4 } from "uuid";
 import { readJsonFile, appendToJsonFile, updateInJsonFile } from "@/lib/data";
 import { bookingSchema } from "@/lib/validators";
@@ -102,9 +103,12 @@ export async function POST(request: NextRequest) {
       await appendToJsonFile<Customer>("customers.json", newCustomer);
     }
 
-    // Fire-and-forget — don't let email failure block the booking response
-    sendBookingNotification(appointment);
-    sendClientConfirmation(appointment);
+    // Both sends are deliberately not awaited — a slow SMTP dialogue must not
+    // hold up the booking response. waitUntil keeps the function alive until
+    // they settle; without it Vercel is free to freeze the instance the moment
+    // the response is returned, silently dropping mail mid-send.
+    waitUntil(sendBookingNotification(appointment));
+    waitUntil(sendClientConfirmation(appointment));
 
     return NextResponse.json(appointment, { status: 201 });
   } catch (error) {
