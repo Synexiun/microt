@@ -1,9 +1,15 @@
 import type { Appointment } from "@/types";
+import type { Transporter } from "nodemailer";
 
-// Sender address. Must be a Resend-verified domain/address to actually deliver.
-// Override via the EMAIL_FROM env var once a sender/domain is verified in Resend.
-const FROM =
-  process.env.EMAIL_FROM || "Velvet Brow by Tannaz <noreply@velvetbrow.com>";
+// Mail goes out over Gmail SMTP from a dedicated send-only account
+// (GMAIL_USER, authenticated with a Google App Password — not the account
+// password). Gmail was chosen over an API provider because those can only send
+// from a domain you control the DNS for, and the studio has no verified domain
+// yet; authenticating as the mailbox sidesteps that entirely.
+//
+// Note that Gmail rewrites the From header to the authenticated account no
+// matter what we pass, so the sender is always GMAIL_USER.
+const SENDER_NAME = "Velvet Brow by Tannaz";
 
 // The studio inbox has been given to us with two spellings ("velvet" and
 // "velevet"). Both are notified because guessing wrong silently loses bookings.
@@ -21,26 +27,52 @@ function studioRecipients(): string[] {
     : STUDIO_RECIPIENTS;
 }
 
+// Replies to a customer-facing mail must reach a mailbox someone actually
+// reads. The sending account is send-only, so point replies at the studio.
+const REPLY_TO = STUDIO_RECIPIENTS[0];
+
+// Resolved once per warm lambda. Returns null when SMTP credentials are absent,
+// which is what keeps email a no-op in local/preview environments.
+let cachedTransport: Transporter | null = null;
+
+async function getTransport(): Promise<Transporter | null> {
+  const user = process.env.GMAIL_USER?.trim();
+  const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, "");
+  if (!user || !pass) return null;
+  if (cachedTransport) return cachedTransport;
+
+  const nodemailer = await import("nodemailer");
+  cachedTransport = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user, pass },
+  });
+  return cachedTransport;
+}
+
+function senderAddress(): string {
+  return `${SENDER_NAME} <${process.env.GMAIL_USER?.trim()}>`;
+}
+
 // Send a booking notification email to the studio owner.
-// Fails silently if RESEND_API_KEY is not configured.
+// Fails silently if the Gmail SMTP credentials are not configured.
 export async function sendBookingNotification(
   appointment: Appointment
 ): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
+  const transport = await getTransport();
+  if (!transport) return;
 
   try {
-    const { Resend } = await import("resend");
-    const resend = new Resend(apiKey);
-
     const dateFormatted = new Date(appointment.date).toLocaleDateString(
       "en-US",
       { weekday: "long", year: "numeric", month: "long", day: "numeric" }
     );
 
-    await resend.emails.send({
-      from: FROM,
+    await transport.sendMail({
+      from: senderAddress(),
       to: studioRecipients(),
+      replyTo: appointment.clientEmail,
       subject: `New Booking: ${appointment.clientName} — ${appointment.serviceName}`,
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
@@ -89,17 +121,14 @@ export async function sendBookingNotification(
 }
 
 // Send a booking confirmation email to the client.
-// Fails silently if RESEND_API_KEY is not configured.
+// Fails silently if the Gmail SMTP credentials are not configured.
 export async function sendClientConfirmation(
   appointment: Appointment
 ): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
+  const transport = await getTransport();
+  if (!transport) return;
 
   try {
-    const { Resend } = await import("resend");
-    const resend = new Resend(apiKey);
-
     const dateFormatted = new Date(appointment.date).toLocaleDateString(
       "en-US",
       { weekday: "long", year: "numeric", month: "long", day: "numeric" }
@@ -108,9 +137,10 @@ export async function sendClientConfirmation(
     const siteUrl =
       process.env.NEXT_PUBLIC_SITE_URL || "https://velvetbrow.com";
 
-    await resend.emails.send({
-      from: FROM,
+    await transport.sendMail({
+      from: senderAddress(),
       to: appointment.clientEmail,
+      replyTo: REPLY_TO,
       subject: `Booking Request Received — ${appointment.serviceName}`,
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
