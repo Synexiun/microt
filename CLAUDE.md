@@ -70,18 +70,25 @@ Blob collections seed from static defaults on first read:
 - **Framer Motion** — All scroll animations, page transitions, interactive elements. Client components using it need `'use client'`.
 - **React Hook Form + Zod** — Booking form with `@hookform/resolvers`. Schemas in `src/lib/validators.ts`.
 - **date-fns** — Date formatting/manipulation in booking calendar and admin tables.
-- **Resend** — Email notifications on booking. Requires `RESEND_API_KEY` + `STUDIO_EMAIL` env vars. Fire-and-forget; silent no-op if env vars not set.
+- **Nodemailer over Gmail SMTP** — Email notifications on booking (`src/lib/email.ts`). Authenticates as a dedicated send-only mailbox (`GMAIL_USER` + `GMAIL_APP_PASSWORD`) rather than an API provider, because providers can only send from a domain whose DNS you control for SPF/DKIM and the studio has no verified domain yet. Silent no-op if either env var is unset, so local and preview never send. Gmail rewrites `From` to the authenticated account regardless of what is passed. Requires the Node.js runtime — Edge cannot open outbound TCP.
 
 ## Environment Variables
 
 ```
 ADMIN_PASSWORD          # Required. Admin login + HMAC signing secret
 BLOB_READ_WRITE_TOKEN   # Required. Auto-set when Vercel Blob Store is connected
-NEXT_PUBLIC_SITE_URL    # Optional. Used in sitemap/SEO
+NEXT_PUBLIC_SITE_URL    # Optional. Sitemap/SEO + the links inside booking emails.
+                        #   Build-time inlined (NEXT_PUBLIC_*) — changing it needs a
+                        #   rebuild, not just a redeploy.
 NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL  # Optional. Contact section map
-RESEND_API_KEY          # Optional. Enables booking email notifications
-STUDIO_EMAIL            # Optional. Destination for booking notification emails
+GMAIL_USER              # Optional. Sending mailbox for booking emails
+GMAIL_APP_PASSWORD      # Optional. Google App Password (needs 2-Step Verification
+                        #   on that account; not the account password)
+STUDIO_EMAIL            # Optional. Extra notification recipient — added to the
+                        #   hardcoded studio addresses, does not replace them
 ```
+
+Both `GMAIL_*` vars must be present or email is a silent no-op.
 
 ## Vercel Deployment Notes
 
