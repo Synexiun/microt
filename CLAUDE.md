@@ -85,7 +85,7 @@ GMAIL_USER              # Optional. Sending mailbox for booking emails
 GMAIL_APP_PASSWORD      # Optional. Google App Password (needs 2-Step Verification
                         #   on that account; not the account password)
 STUDIO_EMAIL            # Optional. Extra notification recipient — added to the
-                        #   hardcoded studio addresses, does not replace them
+                        #   hardcoded studio address, does not replace it
 ```
 
 Both `GMAIL_*` vars must be present or email is a silent no-op.

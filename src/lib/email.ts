@@ -11,12 +11,9 @@ import type { Transporter } from "nodemailer";
 // matter what we pass, so the sender is always GMAIL_USER.
 const SENDER_NAME = "Velvet Brow by Tannaz";
 
-// The studio inbox has been given to us with two spellings ("velvet" and
-// "velevet"). Both are notified because guessing wrong silently loses bookings.
-const STUDIO_RECIPIENTS = [
-  "Velvetbrowbytannaz@gmail.com",
-  "velevetbrowbytannaz@gmail.com",
-];
+// The studio inbox. Mail to both spellings was sent while it was unclear which
+// one was real; the studio has since confirmed this is the one it reads.
+const STUDIO_RECIPIENTS = ["Velvetbrowbytannaz@gmail.com"];
 
 // STUDIO_EMAIL adds a recipient rather than replacing the defaults, so a stale
 // value in the environment can't cut the studio out of its own notifications.
